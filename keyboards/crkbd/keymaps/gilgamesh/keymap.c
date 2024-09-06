@@ -609,12 +609,12 @@ const uint16_t PROGMEM combo_pre_para[] = {HSOPT_T,  KC_J, COMBO_END};
 const uint16_t PROGMEM combo_next_para[] = {HSOPT_A, JP_COMM, COMBO_END};
 
 const uint16_t PROGMEM combo_tab[] = {HSOPT_T, HSCTL_D, COMBO_END};
-const uint16_t PROGMEM combo_esc[] = {HSOPT_T, HSCMD_R, HSCTL_D, COMBO_END};
+const uint16_t PROGMEM combo_esc[] = {HSOPT_T, KC_Y, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {HSCTL_N, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_ret[] = {HSCTL_N, HSCMD_E, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_hiragana[] = {HSCMD_E, HSCMD_R, COMBO_END};
 const uint16_t PROGMEM combo_katakana[] = {HSOPT_T, HSOPT_A, COMBO_END};
-const uint16_t PROGMEM combo_spc[] = {HSOPT_T, KC_Y, COMBO_END};
+const uint16_t PROGMEM combo_spc[] = {HSOPT_T, HSCMD_R, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_eisu[] = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM combo_kana[] = {KC_M, KC_O, COMBO_END};
 
