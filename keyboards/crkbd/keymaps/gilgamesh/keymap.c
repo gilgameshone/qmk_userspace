@@ -45,8 +45,7 @@ enum crkbd_layers {
 
 #define TRON_NUM LT(_NUM,KC_BSPC)
 #define TRON_NAV MO(_NAV)
-#define TRON_SPC LT(_TRON_RED,KC_SPC)
-#define TRON_RET LT(_TRON_BLUE,KC_ENT)
+
 
 
 // magic sturdy Left-hand home row mods
@@ -615,7 +614,9 @@ const uint16_t PROGMEM combo_del[] = {HSCTL_N, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_ret[] = {HSCTL_N, HSCMD_E, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_hiragana[] = {HSCMD_E, HSCMD_R, COMBO_END};
 const uint16_t PROGMEM combo_katakana[] = {HSOPT_T, HSOPT_A, COMBO_END};
-
+const uint16_t PROGMEM combo_spc[] = {HSOPT_T, KC_Y, COMBO_END};
+const uint16_t PROGMEM combo_eisu[] = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM combo_kana[] = {KC_M, KC_O, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_capsword, CW_TOGG),
@@ -635,13 +636,17 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_next_line, KC_DOWN),
   COMBO(combo_pre_para, A(KC_UP)),
   COMBO(combo_next_para, A(KC_DOWN)),
+
   COMBO(combo_tab, KC_TAB),
   COMBO(combo_esc, KC_ESC),
   COMBO(combo_del, KC_BSPC),
   COMBO(combo_ret, KC_ENT),
   COMBO(combo_hiragana, C(KC_J)),
   COMBO(combo_katakana, C(KC_K)),
-          
+  COMBO(combo_spc, KC_SPC),
+  COMBO(combo_eisu, _EISU),
+  COMBO(combo_kana, _KANA),
+        
 };
 
 // caps word
@@ -701,24 +706,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TJ_RA,   TJ_RU,   TJ_KO,   TJ_HA,  TJ_XYO,            TJ_KI,   TJ_NO,   TJ_KU,    TJ_A,   TJ_RE,
         TJ_TA,   TJ_TO,   TJ_KA,   TJ_TE,   TJ_MO,            TJ_WO,    TJ_I,    TJ_U,  TJ_SHI,   TJ_NN,
         TJ_MA,   TJ_RI,   TJ_NI,   TJ_SA,   TJ_NA,            TJ_SU,  TJ_TSU,TJ_DOUTEN,TJ_KUTEN,TJ_XTSU,
-                    _______,   TRON_NUM,  TRON_SPC,            TRON_RET, TRON_NAV,  _______
+        _______,   TRON_NUM,  OSL(_TRON_RED),            OSL(_TRON_BLUE), TRON_NAV,  _______
                          ),
   [_TRON_BLUE] = LAYOUT_split_3x5_3(
         TJ_BI,   TJ_ZO,   TJ_GO,  TJ_BA,    TJ_BO,            TJ_E,   TJ_KE,   TJ_ME,   TJ_MU,  TJ_RO,
         TJ_DA,   TJ_DO,   TJ_GA,  TJ_DE,    TJ_BU,            TJ_O,  TJ_CHI,TJ_CHOUONNPU,TJ_MI,  TJ_YA,
         TJ_XE,   TJ_XO,    TJ_ZE,  TJ_ZA,   TJ_BE,            TJ_WA,   TJ_XI,   TJ_XA, _______,   TJ_XU,
-              _______,  _______, MO(_TRON_PURPLE),             _______, _______, _______
+              _______,  _______, OSL(_TRON_PURPLE),             _______, _______, _______
                                     ),
   [_TRON_RED] = LAYOUT_split_3x5_3(
         TJ_HI,   TJ_SO,TJ_NAKAGURO,TJ_XYA,  TJ_HO,             TJ_GI,   TJ_GE,  TJ_GU,  _______, _______,
         TJ_NU,   TJ_NE,  TJ_XYU,   TJ_YO,   TJ_FU,             TJ_O,  TJ_DZI,  TJ_VU,    TJ_JI, _______,
         TJ_XE,   TJ_XO,   TJ_SE,   TJ_YU,   TJ_HE,             TJ_ZU,  TJ_DZU,TJ_LKAGIKAKO,TJ_RKAGIKAKO, TJ_XU,
-                       _______,  _______, _______,             MO(_TRON_PURPLE), _______, _______
+                       _______,  _______, _______,             OSL(_TRON_PURPLE), _______, _______
                                     ),
   [_TRON_PURPLE] = LAYOUT_split_3x5_3(
-        TJ_PI, _______, _______,   TJ_PA,   TJ_PO,            _______, _______, _______, _______,    _______,
-      _______, _______, _______, _______,   TJ_PU,             KC_SPC, C(JP_J), C(JP_K), C(JP_L), C(JP_SCLN),
-      _______, _______, _______, _______,   TJ_PE,            _______,  KC_ENT, _______, _______,    _______,
+        TJ_PI, _______, _______,   TJ_PA,   TJ_PO,            _______, _______, _______, _______, _______,
+      _______, _______, _______, _______,   TJ_PU,            _______, C(JP_J), C(JP_K), C(JP_L), C(JP_SCLN),
+      _______, _______, _______, _______,   TJ_PE,            _______, _______, _______, _______, _______,
                         _______, _______, _______,            _______, _______, _______
                                     ),
   [_NUM] = LAYOUT_split_3x5_3(
