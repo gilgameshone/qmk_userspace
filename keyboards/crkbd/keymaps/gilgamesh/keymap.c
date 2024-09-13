@@ -94,7 +94,7 @@ enum crkbd_layers {
 //     D * -> DY     O * -> OA      U * -> UE
 //     E * -> EU     P * -> PY      V * -> VS      
 //     G * -> GY     R * -> RL      X * -> XT
-//                   
+//     Y * -> YP             
 //
 
 
@@ -114,6 +114,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         case KC_M: return KC_T;
         case HSOPT_T: return KC_M;
         case KC_V: return KC_S;
+        case KC_Y: return KC_P;
     }
     return KC_TRNS; 
 }
