@@ -615,8 +615,8 @@ const uint16_t PROGMEM combo_ret[] = {HSCTL_N, HSCMD_E, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_hiragana[] = {HSCMD_E, HSCMD_R, COMBO_END};
 const uint16_t PROGMEM combo_katakana[] = {HSOPT_T, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_spc[] = {HSOPT_T, HSCMD_R, HSCTL_D, COMBO_END};
-const uint16_t PROGMEM combo_eisu[] = {KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM combo_kana[] = {KC_M, KC_O, COMBO_END};
+const uint16_t PROGMEM combo_eisu[] = {KC_M, KC_L, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_kana[] = {QK_AREP, KC_U, KC_O, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_capsword, CW_TOGG),
