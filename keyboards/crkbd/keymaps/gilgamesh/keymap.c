@@ -34,6 +34,7 @@ enum crkbd_layers {
     _NAV,
     _EXT,
     _FUN,
+    _NUM_W,
     _WIN,
 };
 
@@ -229,6 +230,8 @@ enum custom_keycodes {
     TJ_RKAGIKAKO,
     _KANA,
     _EISU,
+    _NW_SPC,
+    _NW_RET,
 };
 
 // TAP DANCE
@@ -578,7 +581,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       // when keycode DFINE is released
     }
      return false;
-     
+   case _NW_SPC:
+    if (record->event.pressed) {
+      tap_code(KC_SPC);
+    }
+    else {
+      layer_move(_MAGICSTURDY);
+    }
+    return false;
+  
+  case _NW_RET:
+    if (record->event.pressed) {
+      tap_code(KC_ENT);
+    }
+    else {
+      layer_move(_MAGICSTURDY);
+    }
+    return false;
   }
   return true;
 }
@@ -608,9 +627,8 @@ const uint16_t PROGMEM combo_pre_line[] = {HSCTL_D, KC_J, COMBO_END};
 const uint16_t PROGMEM combo_next_line[] = {HSCTL_N, JP_COMM, COMBO_END};
 const uint16_t PROGMEM combo_pre_para[] = {HSOPT_T,  KC_J, COMBO_END};
 const uint16_t PROGMEM combo_next_para[] = {HSOPT_A, JP_COMM, COMBO_END};
-
 const uint16_t PROGMEM combo_tab[] = {HSOPT_T, HSCTL_D, COMBO_END};
-const uint16_t PROGMEM combo_esc[] = {HSOPT_T, KC_Y, COMBO_END};
+const uint16_t PROGMEM combo_esc[] = {KC_M, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {HSCTL_N, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_ret[] = {HSCTL_N, HSCMD_E, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_hiragana[] = {HSCMD_E, HSCMD_R, COMBO_END};
@@ -618,6 +636,7 @@ const uint16_t PROGMEM combo_katakana[] = {HSOPT_T, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_spc[] = {HSOPT_T, HSCMD_R, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_eisu[] = {KC_M, KC_L, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_kana[] = {QK_AREP, KC_U, KC_O, COMBO_END};
+const uint16_t PROGMEM combo_numword[] = {NUM, TD(OSS_NAV), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_capsword, CW_TOGG),
@@ -637,7 +656,6 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_next_line, KC_DOWN),
   COMBO(combo_pre_para, A(KC_UP)),
   COMBO(combo_next_para, A(KC_DOWN)),
-
   COMBO(combo_tab, KC_TAB),
   COMBO(combo_esc, KC_ESC),
   COMBO(combo_del, KC_BSPC),
@@ -647,7 +665,7 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_spc, KC_SPC),
   COMBO(combo_eisu, _EISU),
   COMBO(combo_kana, _KANA),
-        
+  COMBO(combo_numword, TO(_NUM_W)),
 };
 
 // caps word
@@ -750,6 +768,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX, XXXXXXX, XXXXXXX, DF(_QWERTY),       KC_INS,             KC_SCRL,   KC_F5,   KC_F6,   KC_F7,   KC_F8,
       XXXXXXX, XXXXXXX, XXXXXXX, DF(_MAGICSTURDY), XXXXXXX,             KC_PAUS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,
                                  XXXXXXX, XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX
+                              ),
+  [_NUM_W] = LAYOUT_split_3x5_3(
+      JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, C(KC_F2),           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
+      JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, JP_AT,              JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
+      JP_QUES, JP_UNDS, JP_DQUO, JP_QUOT, JP_PIPE,            JP_EQL,   KC_1, KC_2, KC_3,  KC_DOT,
+      _______,   TO(_MAGICSTURDY),  _NW_SPC,          _NW_RET,  KC_0, _______
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
       MEH(KC_X), MEH(KC_M), MEH(KC_L),  MEH(KC_C),  MEH(KC_P),           _______, _______, _______, _______, _______,
