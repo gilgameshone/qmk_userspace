@@ -620,7 +620,8 @@ const uint16_t PROGMEM combo_up_para[] = {HSOPT_T, HSCMD_R, COMBO_END};
 const uint16_t PROGMEM combo_down_para[] = {HSOPT_A, HSCMD_E, COMBO_END};
 const uint16_t PROGMEM combo_selword[] = {HSCTL_D, HSCTL_N, COMBO_END};
 const uint16_t PROGMEM combo_os_num[] = {HSCMD_R, HSCMD_E, COMBO_END};
-const uint16_t PROGMEM combo_os_sym[] = {HSOPT_T, HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_os_nav[] = {HSOPT_T, HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_os_sym[] = {HSSFT_S, HSSFT_I, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_capsword, CW_TOGG),
@@ -656,6 +657,7 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_down_para, A(KC_DOWN)),
   COMBO(combo_selword, SELWORD),
   COMBO(combo_os_num, OSL(_NUM)),
+  COMBO(combo_os_nav, OSL(_NAV)),
   COMBO(combo_os_sym, OSL(_SYM)),
 };
 
@@ -743,7 +745,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         _______,     NUM,  _______,           KC_ENT,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      G(KC_Z), G(KC_X), G(KC_C), PASTE,   LSG(KC_Z),          LSG(KC_5), KC_LNG2,   _EISU,   _KANA, KC_LNG1,
+      G(KC_Z), G(KC_X), G(KC_C), PASTE,   LSG(KC_Z),          LSG(KC_5), OSM(RCTL), OSM(RGUI), OSM(RALT), OSM(RSFT),
       KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT,   XXXXXXX,          _______, KC_RCTL, KC_RGUI, KC_RALT, KC_RSFT,
       KC_HOME, KC_PGUP, KC_PGDN, KC_END,    XXXXXXX,          HYPR(KC_B), KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE,
                         _______, KC_ESC,     KC_TAB,          _______, _______, _______
