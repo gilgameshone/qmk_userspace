@@ -10,3 +10,4 @@ EXTRAKEY_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
 TAP_DANCE_ENABLE = yes
 CONVERT_TO=kb2040
+SRC += features/select_word.c

@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdio.h>
 #include "keymap_japanese.h"
 #include "sendstring_japanese.h"
+#include "features/select_word.h"
 
 
 enum crkbd_layers {
@@ -32,14 +33,14 @@ enum crkbd_layers {
     _TRON_PURPLE,
     _NUM,
     _NAV,
-    _EXT,
+    _SYM,
     _FUN,
     _NUM_W,
     _WIN,
 };
 
 #define NUM LT(_NUM,KC_BSPC)
-#define EXT LT(_EXT,KC_SPC)
+#define SYM LT(_SYM,KC_SPC)
 #define FUN MO(_FUN)
 
 #define PASTE G(KC_V)
@@ -62,22 +63,6 @@ enum crkbd_layers {
 #define HSOPT_A RALT_T(KC_A)
 #define HSSFT_I RSFT_T(KC_I)
 #define HSHYP_H HYPR_T(KC_H)
-
-
-// TRON Left-hand home row mods // defunct
-#define HCTL_TJ_TE TJ_TE
-#define HCMD_TJ_KA TJ_KA
-#define HOPT_TJ_TO TJ_TO
-#define HSFT_TJ_TA TJ_TA
-
-
-// TRON Right-hand home row mods // defunct
-#define HCTL_TJ_I TJ_I
-#define HCMD_TJ_U TJ_U
-#define HOPT_TJ_SHI TJ_SHI
-#define HSFT_TJ_NN TJ_NN
-
-
 
 // This keymap uses Ikcelaks' Magic Sturdy layout for the base layer (see
 // https://github.com/Ikcelaks/keyboard_layouts). Getreuer also made some twists of
@@ -190,11 +175,6 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 
 #define C_MAGIC QK_AREP
 
-
-// super cmd tab
-bool is_cmd_tab_active = false; // ADD this near the beginning of keymap.c
-uint16_t cmd_tab_timer = 0;     // we will be using them soon.
-
 enum custom_keycodes {
     GOOGL = SAFE_RANGE,
     GTRNS,
@@ -232,6 +212,7 @@ enum custom_keycodes {
     _EISU,
     _NW_SPC,
     _NW_RET,
+    SELWORD,    
 };
 
 // TAP DANCE
@@ -249,10 +230,10 @@ typedef struct {
 } td_tap_t;
 
 enum {
-    OSS_NAV, // Our custom tap dance key; add any other tap dance keys to this enum 
+    OSS_NAV, // One shot shift on press - nav layer access on hold   
 };
 
-// Declare the functions to be used with your tap dance key(s)
+// Declare the functions to be used with the tap dance key OSS_NAV
 
 // Function associated with all tap dances
 td_state_t cur_dance(tap_dance_state_t *state);
@@ -581,7 +562,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       // when keycode DFINE is released
     }
      return false;
-   case _NW_SPC:
+  case _NW_SPC: // to leave toggled layer
     if (record->event.pressed) {
       tap_code(KC_SPC);
     }
@@ -590,7 +571,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
   
-  case _NW_RET:
+  case _NW_RET: // to leave toggled layer
     if (record->event.pressed) {
       tap_code(KC_ENT);
     }
@@ -599,22 +580,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
   }
+  if (!process_select_word(keycode, record, SELWORD)) { return false; } // for select word function
   return true;
 }
 
 
-
-
-
-
-
 // combos
 
-const uint16_t PROGMEM combo_capsword[] = {EXT, QK_REP, COMBO_END};
+const uint16_t PROGMEM combo_capsword[] = {SYM, QK_REP, COMBO_END};
 const uint16_t PROGMEM combo_qkboot[] = {KC_X, HSSFT_S, KC_V, COMBO_END};
 const uint16_t PROGMEM combo_qkreboot[] = {KC_P, KC_Y, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_qkeeprom[] = {KC_C, HSCTL_D, KC_G, COMBO_END};
-const uint16_t PROGMEM combo_fun[] = {EXT, NUM, COMBO_END};
+const uint16_t PROGMEM combo_fun[] = {SYM, NUM, COMBO_END};
 const uint16_t PROGMEM combo_win[] = {QK_REP, TD(OSS_NAV), COMBO_END};
 const uint16_t PROGMEM combo_sorcery[] = {KC_C, QK_AREP, COMBO_END};
 const uint16_t PROGMEM combo_back_char[] = {HSHYP_G, KC_J, COMBO_END};
@@ -631,12 +608,19 @@ const uint16_t PROGMEM combo_tab[] = {HSOPT_T, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_M, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {HSCTL_N, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_ret[] = {HSCTL_N, HSCMD_E, HSOPT_A, COMBO_END};
-const uint16_t PROGMEM combo_hiragana[] = {HSCMD_E, HSCMD_R, COMBO_END};
-const uint16_t PROGMEM combo_katakana[] = {HSOPT_T, HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_hiragana[] = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM combo_katakana[] = {KC_M, KC_O, COMBO_END};
 const uint16_t PROGMEM combo_spc[] = {HSOPT_T, HSCMD_R, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_eisu[] = {KC_M, KC_L, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_kana[] = {QK_AREP, KC_U, KC_O, COMBO_END};
 const uint16_t PROGMEM combo_numword[] = {NUM, TD(OSS_NAV), COMBO_END};
+const uint16_t PROGMEM combo_down[] = {HSCTL_N, HSCMD_E, COMBO_END};
+const uint16_t PROGMEM combo_up[] = {HSCTL_D, HSCMD_R, COMBO_END};
+const uint16_t PROGMEM combo_up_para[] = {HSOPT_T, HSCMD_R, COMBO_END};
+const uint16_t PROGMEM combo_down_para[] = {HSOPT_A, HSCMD_E, COMBO_END};
+const uint16_t PROGMEM combo_selword[] = {HSCTL_D, HSCTL_N, COMBO_END};
+const uint16_t PROGMEM combo_os_num[] = {HSCMD_R, HSCMD_E, COMBO_END};
+const uint16_t PROGMEM combo_os_sym[] = {HSOPT_T, HSOPT_A, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_capsword, CW_TOGG),
@@ -666,6 +650,13 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_eisu, _EISU),
   COMBO(combo_kana, _KANA),
   COMBO(combo_numword, TO(_NUM_W)),
+  COMBO(combo_up, KC_UP),
+  COMBO(combo_down, KC_DOWN),
+  COMBO(combo_up_para, A(KC_UP)),
+  COMBO(combo_down_para, A(KC_DOWN)),
+  COMBO(combo_selword, SELWORD),
+  COMBO(combo_os_num, OSL(_NUM)),
+  COMBO(combo_os_sym, OSL(_SYM)),
 };
 
 // caps word
@@ -713,13 +704,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_X,     KC_M,    KC_L,    KC_C, KC_P,              KC_B,  QK_AREP,    KC_U,    KC_O,    KC_Q,
         HSSFT_S,  HSOPT_T, HSCMD_R, HSCTL_D, KC_Y,              KC_F,  HSCTL_N, HSCMD_E, HSOPT_A, HSSFT_I,
            KC_V,     KC_K,    KC_J, HSHYP_G, KC_W,              KC_Z,  HSHYP_H, JP_COMM, JP_DOT,  JP_MINS,
-                           _______,     NUM,  EXT,              QK_REP,  TD(OSS_NAV), _______
+                           _______,     NUM,  SYM,              QK_REP,  TD(OSS_NAV), _______
   ),
   [_QWERTY] = LAYOUT_split_3x5_3(
            KC_Q,     KC_W,    KC_E,    KC_R,  KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
            KC_A,     KC_S,    KC_D,    KC_F,  KC_G,            KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,
            KC_Z,     KC_X,    KC_C,    KC_V,  KC_B,            KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
-                           _______,    NUM,    EXT,            QK_REP,  TD(OSS_NAV), _______
+                           _______,    NUM,    SYM,            QK_REP,  TD(OSS_NAV), _______
   ),
   [_TRON_BASE] = LAYOUT_split_3x5_3(
         TJ_RA,   TJ_RU,   TJ_KO,   TJ_HA,  TJ_XYO,            TJ_KI,   TJ_NO,   TJ_KU,    TJ_A,   TJ_RE,
@@ -757,7 +748,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_HOME, KC_PGUP, KC_PGDN, KC_END,    XXXXXXX,          HYPR(KC_B), KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE,
                         _______, KC_ESC,     KC_TAB,          _______, _______, _______
                               ),
-  [_EXT] = LAYOUT_split_3x5_3(
+  [_SYM] = LAYOUT_split_3x5_3(
        _______,   _______, G(KC_C),    PASTE,  S(LAG(KC_V)),         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
        _______, A(KC_DEL), _______,   KC_DEL,    HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
        JP_CAPS,     DFINE,   GTRNS,    GOOGL,       _______,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
@@ -835,7 +826,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case NUM:
             return TAPPING_TERM - 80;
-        case EXT:
+        case SYM:
             return TAPPING_TERM - 50;
         case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
             return 200;       
@@ -849,7 +840,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
   case NUM:
     // Immediately select the hold action when another key is tapped.
     return true;
-  case EXT:
+  case SYM:
     return true;
   default :
     // Do not select the hold action when another key is tapped.
