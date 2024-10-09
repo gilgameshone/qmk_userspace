@@ -31,6 +31,8 @@ enum crkbd_layers {
     _TRON_RED,
     _TRON_BLUE,
     _TRON_PURPLE,
+    _TRON_NUM,
+    _TRON_SYM,
     _NUM,
     _NAV,
     _SYM,
@@ -41,14 +43,18 @@ enum crkbd_layers {
 
 #define NUM LT(_NUM,KC_BSPC)
 #define SYM LT(_SYM,KC_SPC)
+#define OSS TD(OSS_NAV)
+
 #define FUN MO(_FUN)
 
 #define PASTE G(KC_V)
+#define UNDO G(KC_Z)
+#define COPY G(KC_C)
 
-#define TRON_NUM LT(_NUM,KC_BSPC)
+#define TRON_NUM LT(_TRON_NUM,KC_BSPC)
 #define TRON_NAV MO(_NAV)
 
-
+#define COMBO_REF_DEFAULT _MAGICSTURDY
 
 // magic sturdy Left-hand home row mods
 #define HSCTL_D LCTL_T(KC_D)
@@ -208,6 +214,47 @@ enum custom_keycodes {
     TJ_PO,
     TJ_LKAGIKAKO,
     TJ_RKAGIKAKO,
+    TJS_QMARK,
+    TJS_SLASH,
+    TJS_SEMI,
+    TJS_COLN,
+    TJS_N1,
+    TJS_N2,
+    TJS_N3,
+    TJS_N4,
+    TJS_N5,
+    TJS_N6,
+    TJS_N7,
+    TJS_N8,
+    TJS_N9,
+    TJS_N0,
+    TJS_AT,
+    TJS_LBKT,
+    TJS_RBKT,
+    TJS_MINUS,
+    TJS_CARET,
+    TJS_YEN,
+    TJS_EXL,
+    TJS_DQT,
+    TJS_HASH,
+    TJS_DLLR,
+    TJS_PRNT,
+    TJS_AMPS,
+    TJS_SQT,
+    TJS_LPAR,
+    TJS_RPAR,
+    TJS_GRAVE,
+    TJS_LBRC,
+    TJS_RBRC,
+    TJS_EQL,
+    TJS_TILDE,
+    TJS_PIPE,
+    TJS_UNDER,
+    TJS_ASTRK,
+    TJS_PLUS,
+    TJS_DOT,
+    TJS_MT,
+    TJS_LT,
     _KANA,
     _EISU,
     _NW_SPC,
@@ -517,6 +564,441 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
 
+
+    // TJS_QMARK
+  case TJS_QMARK:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_SLASH)
+                  SS_UP(X_LSFT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+        // TJS_SLASH,
+  case TJS_SLASH:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_SLASH));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+        // TJS_SEMI
+  case TJS_SEMI:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_SCLN));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+            // TJS_COLN
+  case TJS_COLN:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_QUOT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+
+                // TJS_N1
+  case TJS_N1:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_1));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_N2
+  case TJS_N2:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_2));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_N3
+  case TJS_N3:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_3));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_N4
+  case TJS_N4:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_4));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_N5
+  case TJS_N5:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_5));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_N6
+  case TJS_N6:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_6));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_N7
+  case TJS_N7:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_7));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_N8
+  case TJS_N8:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_8));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_N9
+  case TJS_N9:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_9));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_N0
+  case TJS_N0:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_0));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_AT
+  case TJS_AT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_LBRC));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;    
+        // TJS_LBKT
+  case TJS_LBKT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_RBRC));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+        return false;
+                // TJS_RBKT
+  case TJS_RBKT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_BSLS));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+        return false;
+    // TJS_MINUS
+  case TJS_MINUS:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_MINS));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+    // TJS_CARET
+  case TJS_CARET:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_EQL));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+        // TJS_YEN
+  case TJS_YEN:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_INT3));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+        // TJS_EXL
+  case TJS_EXL:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_1)
+                  SS_UP(X_LSFT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+        // TJS_DQT
+  case TJS_DQT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_2)
+                  SS_UP(X_LSFT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+            // TJS_HASH
+  case TJS_HASH:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_3)
+                  SS_UP(X_LSFT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+            // TJS_DLLR
+  case TJS_DLLR:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_4)
+                  SS_UP(X_LSFT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+            // TJS_PRNT
+  case TJS_PRNT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_5)
+                  SS_UP(X_LSFT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+            // TJS_AMPS
+  case TJS_AMPS:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_6)
+                  SS_UP(X_LSFT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+            // TJS_SQT
+  case TJS_SQT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_7)
+                  SS_UP(X_LSFT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+            // TJS_LPAR
+  case TJS_LPAR:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_8)
+                  SS_UP(X_LSFT)); // shifted
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+                // TJS_RPAR
+  case TJS_RPAR:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_9)
+                  SS_UP(X_LSFT));
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+
+  // TJS_GRAVE
+  case TJS_GRAVE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_LBRC)
+                  SS_UP(X_LSFT)); // shifted   
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;    
+        // TJS_LBRC
+  case TJS_LBRC:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_RBRC)
+                  SS_UP(X_LSFT)); // shifted 
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+        return false;
+                // TJS_RBRC
+  case TJS_RBRC:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_BSLS)
+                  SS_UP(X_LSFT)); // shifted   
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+        return false;
+        // TJS_EQL
+  case TJS_EQL:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_MINS)
+                  SS_UP(X_LSFT)); // shifted   
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+    // TJS_TILDE
+  case TJS_TILDE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_EQL)
+                  SS_UP(X_LSFT)); // shifted  
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+        // TJS_PIPE
+  case TJS_PIPE:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_INT3)
+                  SS_UP(X_LSFT)); // shifted   
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+     // TJS_UNDER
+  case TJS_UNDER:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_INT1)
+                  SS_UP(X_LSFT)); // shifted   
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+   // TJS_ASRTK
+  case TJS_ASTRK:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_QUOT)
+                  SS_UP(X_LSFT)); // shifted   
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+   // TJS_PLUS
+  case TJS_PLUS:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_SCLN)
+                  SS_UP(X_LSFT)); // shifted   
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+       // TJS_DOT
+  case TJS_DOT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_DOT));    
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+   // TJS_MT
+  case TJS_MT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_DOT)
+                  SS_UP(X_LSFT)); // shifted   
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+   // TJS_LT
+  case TJS_LT:
+    if (record->event.pressed) {
+      SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_COMM)
+                  SS_UP(X_LSFT)); // shifted   
+      SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_L)
+                  SS_UP(X_LCTL)); // convert to romaji
+    } else {
+      //
+    }
+    return false;
+    
     // other macros
   case GOOGL:
     if (record->event.pressed) {
@@ -585,14 +1067,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 
-// combos
+// combos mappings
 
 const uint16_t PROGMEM combo_capsword[] = {SYM, QK_REP, COMBO_END};
 const uint16_t PROGMEM combo_qkboot[] = {KC_X, HSSFT_S, KC_V, COMBO_END};
 const uint16_t PROGMEM combo_qkreboot[] = {KC_P, KC_Y, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_qkeeprom[] = {KC_C, HSCTL_D, KC_G, COMBO_END};
 const uint16_t PROGMEM combo_fun[] = {SYM, NUM, COMBO_END};
-const uint16_t PROGMEM combo_win[] = {QK_REP, TD(OSS_NAV), COMBO_END};
+const uint16_t PROGMEM combo_win[] = {QK_REP, OSS, COMBO_END};
 const uint16_t PROGMEM combo_sorcery[] = {KC_C, QK_AREP, COMBO_END};
 const uint16_t PROGMEM combo_back_char[] = {HSHYP_G, KC_J, COMBO_END};
 const uint16_t PROGMEM combo_for_char[] = {HSHYP_H, JP_COMM, COMBO_END};
@@ -604,16 +1086,19 @@ const uint16_t PROGMEM combo_pre_line[] = {HSCTL_D, KC_J, COMBO_END};
 const uint16_t PROGMEM combo_next_line[] = {HSCTL_N, JP_COMM, COMBO_END};
 const uint16_t PROGMEM combo_pre_para[] = {HSOPT_T,  KC_J, COMBO_END};
 const uint16_t PROGMEM combo_next_para[] = {HSOPT_A, JP_COMM, COMBO_END};
-const uint16_t PROGMEM combo_tab[] = {HSOPT_T, HSCTL_D, COMBO_END};
+const uint16_t PROGMEM combo_delw[] = {HSOPT_T, HSCTL_D, COMBO_END};
+const uint16_t PROGMEM combo_del[] = {SYM, HSCTL_D, COMBO_END};
+const uint16_t PROGMEM combo_tab[] = {HSOPT_T, HSHYP_G, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_M, KC_C, COMBO_END};
-const uint16_t PROGMEM combo_del[] = {HSCTL_N, HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_bkspw[] = {HSCTL_N, HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_bksp[] = {HSCTL_N, QK_REP, COMBO_END};
 const uint16_t PROGMEM combo_ret[] = {HSCTL_N, HSCMD_E, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_hiragana[] = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM combo_katakana[] = {KC_M, KC_O, COMBO_END};
 const uint16_t PROGMEM combo_spc[] = {HSOPT_T, HSCMD_R, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_eisu[] = {KC_M, KC_L, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_kana[] = {QK_AREP, KC_U, KC_O, COMBO_END};
-const uint16_t PROGMEM combo_numword[] = {NUM, TD(OSS_NAV), COMBO_END};
+const uint16_t PROGMEM combo_numword[] = {NUM, OSS, COMBO_END};
 const uint16_t PROGMEM combo_down[] = {HSCTL_N, HSCMD_E, COMBO_END};
 const uint16_t PROGMEM combo_up[] = {HSCTL_D, HSCMD_R, COMBO_END};
 const uint16_t PROGMEM combo_up_para[] = {HSOPT_T, HSCMD_R, COMBO_END};
@@ -622,6 +1107,15 @@ const uint16_t PROGMEM combo_selword[] = {HSCTL_D, HSCTL_N, COMBO_END};
 const uint16_t PROGMEM combo_os_num[] = {HSCMD_R, HSCMD_E, COMBO_END};
 const uint16_t PROGMEM combo_os_nav[] = {HSOPT_T, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_os_sym[] = {HSSFT_S, HSSFT_I, COMBO_END};
+const uint16_t PROGMEM combo_undo[] = {SYM, KC_M, COMBO_END};
+const uint16_t PROGMEM combo_copy[] = {KC_M, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_paste[] = {KC_L, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_save[] = {SYM, HSOPT_T, COMBO_END};
+const uint16_t PROGMEM combo_page_up[] = {SYM, HSHYP_G, COMBO_END};
+const uint16_t PROGMEM combo_page_down[] = {HSHYP_H, QK_REP, COMBO_END};
+const uint16_t PROGMEM combo_select_all[] = {HSOPT_A, QK_REP, COMBO_END};
+
+// combo effects
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_capsword, CW_TOGG),
@@ -641,9 +1135,12 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_next_line, KC_DOWN),
   COMBO(combo_pre_para, A(KC_UP)),
   COMBO(combo_next_para, A(KC_DOWN)),
+  COMBO(combo_del, KC_DEL),
+  COMBO(combo_delw, A(KC_DEL)),
   COMBO(combo_tab, KC_TAB),
   COMBO(combo_esc, KC_ESC),
-  COMBO(combo_del, KC_BSPC),
+  COMBO(combo_bksp, KC_BSPC),
+  COMBO(combo_bkspw, A(KC_BSPC)),
   COMBO(combo_ret, KC_ENT),
   COMBO(combo_hiragana, C(KC_J)),
   COMBO(combo_katakana, C(KC_K)),
@@ -659,6 +1156,13 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_os_num, OSL(_NUM)),
   COMBO(combo_os_nav, OSL(_NAV)),
   COMBO(combo_os_sym, OSL(_SYM)),
+  COMBO(combo_undo, UNDO),
+  COMBO(combo_copy, COPY),
+  COMBO(combo_paste, PASTE),
+  COMBO(combo_save, G(KC_S)),
+  COMBO(combo_page_up, KC_PGUP),
+  COMBO(combo_page_down, KC_PGDN),
+  COMBO(combo_select_all, G(KC_A)),
 };
 
 // caps word
@@ -688,12 +1192,23 @@ bool caps_word_press_user(uint16_t keycode) {
 const key_override_t comm_quo_override = ko_make_basic(MOD_MASK_SHIFT, JP_COMM, JP_QUOT);
 const key_override_t dot_dquo_override = ko_make_basic(MOD_MASK_SHIFT, JP_DOT, JP_DQUO);
 const key_override_t min_ques_override = ko_make_basic(MOD_MASK_SHIFT, JP_MINS, JP_QUES);
+const key_override_t capsw_capsl_override = ko_make_basic(MOD_MASK_SHIFT, CW_TOGG, KC_CAPS);
+const key_override_t paste_pastewithout_override = ko_make_basic(MOD_MASK_ALT, PASTE, S(LAG(KC_V)));
+const key_override_t paste_yank_override = ko_make_basic(MOD_MASK_GUI, PASTE, S(LCAG(KC_Y))); //not working
+const key_override_t undo_redo_override = ko_make_basic(MOD_MASK_CTRL, UNDO, S(G(KC_Z)));
+const key_override_t copy_cut_override = ko_make_basic(MOD_MASK_CTRL, COPY, G(KC_X));
+
+
 
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &comm_quo_override,
     &dot_dquo_override,
     &min_ques_override,
+    &capsw_capsl_override,
+    &paste_pastewithout_override,
+    &undo_redo_override,
+    &copy_cut_override,
     NULL
 };
 
@@ -706,31 +1221,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_X,     KC_M,    KC_L,    KC_C, KC_P,              KC_B,  QK_AREP,    KC_U,    KC_O,    KC_Q,
         HSSFT_S,  HSOPT_T, HSCMD_R, HSCTL_D, KC_Y,              KC_F,  HSCTL_N, HSCMD_E, HSOPT_A, HSSFT_I,
            KC_V,     KC_K,    KC_J, HSHYP_G, KC_W,              KC_Z,  HSHYP_H, JP_COMM, JP_DOT,  JP_MINS,
-                           _______,     NUM,  SYM,              QK_REP,  TD(OSS_NAV), _______
+           _______,     NUM,  SYM,                              QK_REP,  OSS, TD(OSS_NAV)
   ),
   [_QWERTY] = LAYOUT_split_3x5_3(
            KC_Q,     KC_W,    KC_E,    KC_R,  KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
            KC_A,     KC_S,    KC_D,    KC_F,  KC_G,            KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,
            KC_Z,     KC_X,    KC_C,    KC_V,  KC_B,            KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
-                           _______,    NUM,    SYM,            QK_REP,  TD(OSS_NAV), _______
+                           _______,    NUM,    SYM,            QK_REP,  OSS, _______
   ),
   [_TRON_BASE] = LAYOUT_split_3x5_3(
         TJ_RA,   TJ_RU,   TJ_KO,   TJ_HA,  TJ_XYO,            TJ_KI,   TJ_NO,   TJ_KU,    TJ_A,   TJ_RE,
         TJ_TA,   TJ_TO,   TJ_KA,   TJ_TE,   TJ_MO,            TJ_WO,    TJ_I,    TJ_U,  TJ_SHI,   TJ_NN,
         TJ_MA,   TJ_RI,   TJ_NI,   TJ_SA,   TJ_NA,            TJ_SU,  TJ_TSU,TJ_DOUTEN,TJ_KUTEN,TJ_XTSU,
-        _______,   TRON_NUM,  OSL(_TRON_RED),            OSL(_TRON_BLUE), TRON_NAV,  _______
+        _______,   TRON_NUM,  OSL(_TRON_RED),                 OSL(_TRON_BLUE), TRON_NAV,  _______
                          ),
   [_TRON_BLUE] = LAYOUT_split_3x5_3(
         TJ_BI,   TJ_ZO,   TJ_GO,  TJ_BA,    TJ_BO,            TJ_E,   TJ_KE,   TJ_ME,   TJ_MU,  TJ_RO,
         TJ_DA,   TJ_DO,   TJ_GA,  TJ_DE,    TJ_BU,            TJ_O,  TJ_CHI,TJ_CHOUONNPU,TJ_MI,  TJ_YA,
         TJ_XE,   TJ_XO,    TJ_ZE,  TJ_ZA,   TJ_BE,            TJ_WA,   TJ_XI,   TJ_XA, _______,   TJ_XU,
-              _______,  _______, OSL(_TRON_PURPLE),             _______, _______, _______
+              _______,  OSL(_TRON_NUM), OSL(_TRON_PURPLE),             _______, _______, _______
                                     ),
   [_TRON_RED] = LAYOUT_split_3x5_3(
         TJ_HI,   TJ_SO,TJ_NAKAGURO,TJ_XYA,  TJ_HO,             TJ_GI,   TJ_GE,  TJ_GU,  _______, _______,
         TJ_NU,   TJ_NE,  TJ_XYU,   TJ_YO,   TJ_FU,             TJ_O,  TJ_DZI,  TJ_VU,    TJ_JI, _______,
         TJ_XE,   TJ_XO,   TJ_SE,   TJ_YU,   TJ_HE,             TJ_ZU,  TJ_DZU,TJ_LKAGIKAKO,TJ_RKAGIKAKO, TJ_XU,
-                       _______,  _______, _______,             OSL(_TRON_PURPLE), _______, _______
+                       _______,  _______, OSL(_TRON_SYM),             OSL(_TRON_PURPLE), _______, _______
                                     ),
   [_TRON_PURPLE] = LAYOUT_split_3x5_3(
         TJ_PI, _______, _______,   TJ_PA,   TJ_PO,            _______, _______, _______, _______, _______,
@@ -738,14 +1253,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______,   TJ_PE,            _______, _______, _______, _______, _______,
                         _______, _______, _______,            _______, _______, _______
                                     ),
+  [_TRON_NUM] = LAYOUT_split_3x5_3(
+     TJS_EXL, TJS_LBKT, TJS_RBKT,  TJS_COLN,  C(KC_F2) ,        TJS_PLUS, TJS_N7, TJS_N8, TJS_N9, TJS_ASTRK,
+     TJS_AMPS, TJS_LPAR, TJS_RPAR, TJS_SEMI,   TJS_AT,          TJS_MINUS, TJS_N4, TJS_N5, TJS_N6, TJS_SLASH,
+     TJS_QMARK, TJS_UNDER, TJS_DQT, TJS_SQT,   TJS_PIPE,        TJS_EQL, TJS_N1, TJS_N2, TJS_N3, TJS_DOT,
+     _______, _______, MO(_TRON_SYM),                           KC_ENT, TJS_N0, _______
+                                    ),
+  [_TRON_SYM] = LAYOUT_split_3x5_3(
+      _______, _______, _______, _______,  _______,            _______, TJS_HASH, TJS_LT, TJS_MT, TJS_CARET,
+      _______, _______, _______, _______,  _______,            TJS_TILDE, TJS_PRNT, TJS_LBRC, TJS_RBRC, TJS_GRAVE,
+      _______, _______, _______, _______,  _______,            _______, TJS_YEN, TJS_DLLR, _______, _______,
+                        _______, _______, _______,            _______, _______, _______
+                                    ),
   [_NUM] = LAYOUT_split_3x5_3(
       JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, C(KC_F2),           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
       JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, JP_AT,              JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
-      JP_QUES, JP_UNDS, JP_DQUO, JP_QUOT, JP_PIPE,            JP_EQL,   KC_1, KC_2, KC_3,  KC_DOT,
+      TJS_QMARK, JP_UNDS, JP_DQUO, JP_QUOT, JP_PIPE,            JP_EQL,   KC_1, KC_2, KC_3,  KC_DOT,
                         _______,     NUM,  _______,           KC_ENT,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      G(KC_Z), G(KC_X), G(KC_C), PASTE,   LSG(KC_Z),          LSG(KC_5), OSM(RCTL), OSM(RGUI), OSM(RALT), OSM(RSFT),
+      G(KC_Z), G(KC_X), G(KC_C), PASTE,   LSG(KC_Z),          LSG(KC_5), OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
       KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT,   XXXXXXX,          _______, KC_RCTL, KC_RGUI, KC_RALT, KC_RSFT,
       KC_HOME, KC_PGUP, KC_PGDN, KC_END,    XXXXXXX,          HYPR(KC_B), KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE,
                         _______, KC_ESC,     KC_TAB,          _______, _______, _______
@@ -766,7 +1293,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, C(KC_F2),           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
       JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, JP_AT,              JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
       JP_QUES, JP_UNDS, JP_DQUO, JP_QUOT, JP_PIPE,            JP_EQL,   KC_1, KC_2, KC_3,  KC_DOT,
-      _______,   TO(_MAGICSTURDY),  _NW_SPC,          _NW_RET,  KC_0, _______
+      _______,   TO(_MAGICSTURDY),  _NW_SPC,                 _NW_RET,  KC_0, _______
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
       MEH(KC_X), MEH(KC_M), MEH(KC_L),  MEH(KC_C),  MEH(KC_P),           _______, _______, _______, _______, _______,
@@ -827,11 +1354,11 @@ tap_dance_action_t tap_dance_actions[] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case NUM:
-            return TAPPING_TERM - 80;
+            return 240;
         case SYM:
-            return TAPPING_TERM - 50;
+            return 240;
         case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
-            return 200;       
+            return 300;       
         default:
             return TAPPING_TERM;
     }
@@ -849,4 +1376,16 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     return false;
   }
   return true;
+}
+
+uint8_t combo_ref_from_layer(uint8_t layer){
+    switch (get_highest_layer(layer_state)){
+        case _TRON_BASE: return _TRON_BASE;
+        case _TRON_RED: return _TRON_BASE;
+        case _TRON_BLUE: return _TRON_BASE;
+        case _TRON_PURPLE: return _TRON_BASE;
+        case _NUM_W: return _NUM_W;
+        default: return _MAGICSTURDY;
+    }
+    return layer;  // important if default is not in case.
 }
