@@ -1219,9 +1219,9 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MAGICSTURDY] = LAYOUT_split_3x5_3(
-           KC_X,     KC_M,    KC_L,    KC_C, KC_P,              KC_B,  QK_AREP,    KC_U,    KC_O,    KC_Q,
-        HSSFT_S,  HSOPT_T, HSCMD_R, HSCTL_D, KC_Y,              KC_F,  HSCTL_N, HSCMD_E, HSOPT_A, HSSFT_I,
-           KC_V,     KC_K,    KC_J, HSHYP_G, KC_W,              KC_Z,  HSHYP_H, JP_COMM, JP_DOT,  JP_MINS,
+           XXXXXXX,     KC_M,    KC_L,    KC_C, XXXXXXX,              XXXXXXX,  QK_AREP,    KC_U,    KC_O,    XXXXXXX,
+        HSSFT_S,  HSOPT_T, HSCMD_R, HSCTL_D, XXXXXXX,              XXXXXXX,  HSCTL_N, HSCMD_E, HSOPT_A, HSSFT_I,
+           XXXXXXX,     KC_K,    KC_J, HSHYP_G, XXXXXXX,              XXXXXXX,  HSHYP_H, JP_COMM, JP_DOT,  XXXXXXX,
            _______,     NUM,  SYM,                              QK_REP,  OSS, TD(OSS_NAV)
   ),
   [_MAGICSTURDY2] = LAYOUT_split_3x5_3(
