@@ -1354,29 +1354,18 @@ tap_dance_action_t tap_dance_actions[] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case NUM:
-            return 240;
+            return 250;
         case SYM:
-            return 240;
+            return 250;
+        case OSS_NAV:
+            return 250;
         case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
-            return 300;       
+            return 250;       
         default:
             return TAPPING_TERM;
     }
 }
 
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-  case NUM:
-    // Immediately select the hold action when another key is tapped.
-    return true;
-  case SYM:
-    return true;
-  default :
-    // Do not select the hold action when another key is tapped.
-    return false;
-  }
-  return true;
-}
 
 uint8_t combo_ref_from_layer(uint8_t layer){
     switch (get_highest_layer(layer_state)){
