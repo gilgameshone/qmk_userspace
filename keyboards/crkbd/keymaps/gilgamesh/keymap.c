@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 enum crkbd_layers {
     _MAGICSTURDY,
+    _MAGICSTURDY2,
     _QWERTY,
     _TRON_BASE,
     _TRON_RED,
@@ -41,7 +42,7 @@ enum crkbd_layers {
     _WIN,
 };
 
-#define NUM LT(_NUM,KC_BSPC)
+#define NUM OSL(_MAGICSTURDY2)
 #define SYM LT(_SYM,KC_SPC)
 #define OSS TD(OSS_NAV)
 
@@ -1221,6 +1222,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_X,     KC_M,    KC_L,    KC_C, KC_P,              KC_B,  QK_AREP,    KC_U,    KC_O,    KC_Q,
         HSSFT_S,  HSOPT_T, HSCMD_R, HSCTL_D, KC_Y,              KC_F,  HSCTL_N, HSCMD_E, HSOPT_A, HSSFT_I,
            KC_V,     KC_K,    KC_J, HSHYP_G, KC_W,              KC_Z,  HSHYP_H, JP_COMM, JP_DOT,  JP_MINS,
+           _______,     NUM,  SYM,                              QK_REP,  OSS, TD(OSS_NAV)
+  ),
+  [_MAGICSTURDY2] = LAYOUT_split_3x5_3(
+           XXXXXXX,  XXXXXXX,  XXXXXXX,    KC_P, XXXXXXX,              XXXXXXX,  KC_B,    KC_U,    KC_O,  XXXXXXX,
+           KC_X,     KC_V,     XXXXXXX,    KC_Y, XXXXXXX,              XXXXXXX,  KC_F, HSCMD_E, JP_MINS,  KC_Q,
+           XXXXXXX,  XXXXXXX,  XXXXXXX,    KC_W, XXXXXXX,              XXXXXXX,  KC_Z, XXXXXXX, XXXXXXX,  XXXXXXX,
            _______,     NUM,  SYM,                              QK_REP,  OSS, TD(OSS_NAV)
   ),
   [_QWERTY] = LAYOUT_split_3x5_3(
