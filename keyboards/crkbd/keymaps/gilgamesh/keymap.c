@@ -24,6 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "features/select_word.h"
 
 
+
 enum crkbd_layers {
     _MAGICSTURDY,
     _QWERTY,
@@ -1221,7 +1222,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_X,     KC_M,    KC_L,    KC_C, KC_P,              KC_B,  QK_AREP,    KC_U,    KC_O,    KC_Q,
         HSSFT_S,  HSOPT_T, HSCMD_R, HSCTL_D, KC_Y,              KC_F,  HSCTL_N, HSCMD_E, HSOPT_A, HSSFT_I,
            KC_V,     KC_K,    KC_J, HSHYP_G, KC_W,              KC_Z,  HSHYP_H, JP_COMM, JP_DOT,  JP_MINS,
-           _______,     NUM,  SYM,                              QK_REP,  OSS, TD(OSS_NAV)
+           _______,     NUM,  SYM,                              QK_REP,  OSS, _______
   ),
   [_QWERTY] = LAYOUT_split_3x5_3(
            KC_Q,     KC_W,    KC_E,    KC_R,  KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
@@ -1273,14 +1274,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
       G(KC_Z), G(KC_X), G(KC_C), PASTE,   LSG(KC_Z),          LSG(KC_5), OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT,   XXXXXXX,          _______, KC_RCTL, KC_RGUI, KC_RALT, KC_RSFT,
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, C(KC_F4),          XXXXXXX, KC_RCTL, KC_RGUI, KC_RALT, KC_RSFT,
       KC_HOME, KC_PGUP, KC_PGDN, KC_END,    XXXXXXX,          HYPR(KC_B), KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE,
                         _______, KC_ESC,     KC_TAB,          _______, _______, _______
                               ),
   [_SYM] = LAYOUT_split_3x5_3(
        _______,   _______, G(KC_C),    PASTE,  S(LAG(KC_V)),         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
        _______, A(KC_DEL), _______,   KC_DEL,    HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
-       JP_CAPS,     DFINE,   GTRNS,    GOOGL,       _______,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
+       JP_CAPS,     DFINE,   GTRNS,    GOOGL,       KC_LPAD,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
                                 XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  _______, _______
                               ),
   [_FUN] = LAYOUT_split_3x5_3(
@@ -1297,9 +1298,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
       MEH(KC_X), MEH(KC_M), MEH(KC_L),  MEH(KC_C),  MEH(KC_P),           _______, _______, _______, _______, _______,
-      MEH(KC_S), MEH(KC_T), MEH(KC_R),  MEH(KC_D),  MEH(KC_Y),           _______, _______, _______, _______, _______,
+      MEH(KC_S), MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  MEH(KC_7),           _______, _______, _______, _______, _______,
       MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           _______, _______, _______, _______, _______, 
-                               _______,   _______,  MEH(KC_SPC),         _______, _______, _______
+                               _______,   KC_MCTL,  MEH(KC_SPC),         _______, _______, _______
                               )
 };
 
@@ -1378,3 +1379,11 @@ uint8_t combo_ref_from_layer(uint8_t layer){
     }
     return layer;  // important if default is not in case.
 }
+
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+    LAYOUT(
+        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 
+        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 
+        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 
+                  'L', 'L', 'L',  'R', 'R', 'R'
+    );
