@@ -1380,10 +1380,11 @@ uint8_t combo_ref_from_layer(uint8_t layer){
     return layer;  // important if default is not in case.
 }
 
-const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
-    LAYOUT(
-        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 
-        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 
-        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 
-                  'L', 'L', 'L',  'R', 'R', 'R'
-    );
+char chordal_hold_handedness(keypos_t key) {
+    if (key.col == 0 || key.col == MATRIX_COLS - 1) {
+        return '*';  // Exempt the outer columns.
+    }
+    // On split keyboards, typically, the first half of the rows are on the
+    // left, and the other half are on the right.
+    return key.row < MATRIX_ROWS / 2 ? 'L' : 'R';
+}
