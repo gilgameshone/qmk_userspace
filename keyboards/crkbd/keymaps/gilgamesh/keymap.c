@@ -1202,7 +1202,7 @@ const key_override_t copy_cut_override = ko_make_basic(MOD_MASK_CTRL, COPY, G(KC
 
 
 
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &comm_quo_override,
     &dot_dquo_override,
     &min_ques_override,
@@ -1210,7 +1210,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &paste_pastewithout_override,
     &undo_redo_override,
     &copy_cut_override,
-    NULL
 };
 
 
