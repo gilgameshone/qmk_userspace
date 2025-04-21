@@ -63,6 +63,7 @@ enum crkbd_layers {
 #define HSOPT_T LALT_T(KC_T)
 #define HSSFT_S LSFT_T(KC_S)
 #define HSHYP_G HYPR_T(KC_G)
+#define HS_J LT(_FUN,KC_J)      
 
 // magic sturdy Right-hand home row mods
 #define HSCTL_N RCTL_T(KC_N)
@@ -70,6 +71,7 @@ enum crkbd_layers {
 #define HSOPT_A RALT_T(KC_A)
 #define HSSFT_I RSFT_T(KC_I)
 #define HSHYP_H HYPR_T(KC_H)
+#define HS_COMM LT(_WIN,JP_COMM)
 
 // This keymap uses Ikcelaks' Magic Sturdy layout for the base layer (see
 // https://github.com/Ikcelaks/keyboard_layouts). Getreuer also made some twists of
@@ -278,7 +280,7 @@ typedef struct {
 } td_tap_t;
 
 enum {
-    OSS_NAV, // One shot shift on press - nav layer access on hold   
+    OSS_NAV, // One shot shift on press - nav layer access on hold
 };
 
 // Declare the functions to be used with the tap dance key OSS_NAV
@@ -287,8 +289,15 @@ enum {
 td_state_t cur_dance(tap_dance_state_t *state);
 
 // Functions associated with individual tap dances
-void ql_finished(tap_dance_state_t *state, void *user_data);
-void ql_reset(tap_dance_state_t *state, void *user_data);
+void sn_finished(tap_dance_state_t *state, void *user_data);
+void sn_reset(tap_dance_state_t *state, void *user_data);
+
+void ef_finished(tap_dance_state_t *state, void *user_data);
+void ef_reset(tap_dance_state_t *state, void *user_data);
+
+void kw_finished(tap_dance_state_t *state, void *user_data);
+void kw_reset(tap_dance_state_t *state, void *user_data);
+
 
 // macros
 
@@ -1068,6 +1077,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 
+
 // combos mappings
 
 const uint16_t PROGMEM combo_capsword[] = {SYM, QK_REP, COMBO_END};
@@ -1077,16 +1087,12 @@ const uint16_t PROGMEM combo_qkeeprom[] = {KC_C, HSCTL_D, KC_G, COMBO_END};
 const uint16_t PROGMEM combo_fun[] = {SYM, NUM, COMBO_END};
 const uint16_t PROGMEM combo_win[] = {QK_REP, OSS, COMBO_END};
 const uint16_t PROGMEM combo_sorcery[] = {KC_C, QK_AREP, COMBO_END};
-const uint16_t PROGMEM combo_back_char[] = {HSHYP_G, KC_J, COMBO_END};
-const uint16_t PROGMEM combo_for_char[] = {HSHYP_H, JP_COMM, COMBO_END};
-const uint16_t PROGMEM combo_back_word[] = {KC_K, KC_J, COMBO_END};
-const uint16_t PROGMEM combo_for_word[] = {KC_COMM, JP_DOT, COMBO_END};
+const uint16_t PROGMEM combo_back_char[] = {HSHYP_G, HS_J, COMBO_END};
+const uint16_t PROGMEM combo_for_char[] = {HSHYP_H, HS_COMM, COMBO_END};
+const uint16_t PROGMEM combo_back_word[] = {KC_K, HS_J, COMBO_END};
+const uint16_t PROGMEM combo_for_word[] = {HS_COMM, JP_DOT, COMBO_END};
 const uint16_t PROGMEM combo_back_sent[] = {KC_K, HSHYP_G, COMBO_END};
 const uint16_t PROGMEM combo_for_sent[] = {HSHYP_H, JP_DOT, COMBO_END};
-const uint16_t PROGMEM combo_pre_line[] = {HSCTL_D, KC_J, COMBO_END};
-const uint16_t PROGMEM combo_next_line[] = {HSCTL_N, JP_COMM, COMBO_END};
-const uint16_t PROGMEM combo_pre_para[] = {HSOPT_T,  KC_J, COMBO_END};
-const uint16_t PROGMEM combo_next_para[] = {HSOPT_A, JP_COMM, COMBO_END};
 const uint16_t PROGMEM combo_delw[] = {HSOPT_T, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {SYM, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_tab[] = {HSOPT_T, HSHYP_G, COMBO_END};
@@ -1112,9 +1118,23 @@ const uint16_t PROGMEM combo_undo[] = {SYM, KC_M, COMBO_END};
 const uint16_t PROGMEM combo_copy[] = {KC_M, KC_L, COMBO_END};
 const uint16_t PROGMEM combo_paste[] = {KC_L, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_save[] = {SYM, HSOPT_T, COMBO_END};
-const uint16_t PROGMEM combo_page_up[] = {SYM, HSHYP_G, COMBO_END};
-const uint16_t PROGMEM combo_page_down[] = {HSHYP_H, QK_REP, COMBO_END};
+const uint16_t PROGMEM combo_page_down[] = {HSOPT_A, HS_COMM, COMBO_END};
+const uint16_t PROGMEM combo_page_up [] = {HSOPT_T,  HS_J, COMBO_END};
 const uint16_t PROGMEM combo_select_all[] = {HSOPT_A, QK_REP, COMBO_END};
+const uint16_t PROGMEM combo_scroll_down[] = {HSCTL_N, KC_Z, COMBO_END};
+const uint16_t PROGMEM combo_scroll_up [] = {HSCTL_D,  KC_W, COMBO_END};
+const uint16_t PROGMEM combo_hum_x [] = {HSSFT_S,  KC_V, COMBO_END};
+const uint16_t PROGMEM combo_hum_q [] = {HSSFT_I,  JP_MINS, COMBO_END};
+const uint16_t PROGMEM combo_hum_p [] = {KC_Y,  KC_W, COMBO_END};
+const uint16_t PROGMEM combo_hum_b [] = {KC_F,  KC_Z, COMBO_END};
+const uint16_t PROGMEM combo_brc_paro [] = {KC_C, HSCTL_D, COMBO_END};
+const uint16_t PROGMEM combo_brc_parc [] = {QK_AREP, HSCTL_N, COMBO_END};
+const uint16_t PROGMEM combo_brc_sqbro [] = {KC_L,  HSCMD_R, COMBO_END};
+const uint16_t PROGMEM combo_brc_sqbrc [] = {KC_U,  HSCMD_E, COMBO_END};
+const uint16_t PROGMEM combo_brc_cubro [] = {KC_M,  HSOPT_T, COMBO_END};
+const uint16_t PROGMEM combo_brc_cubrc [] = {KC_O,  HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_brc_anbro [] = {KC_X,  HSSFT_S, COMBO_END};
+  const uint16_t PROGMEM combo_brc_anbrc [] = {KC_Q,  HSSFT_I, COMBO_END};
 
 // combo effects
 
@@ -1132,10 +1152,6 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_for_word, A(KC_RGHT)),
   COMBO(combo_back_sent, KC_HOME),
   COMBO(combo_for_sent, KC_END),
-  COMBO(combo_pre_line, KC_UP),
-  COMBO(combo_next_line, KC_DOWN),
-  COMBO(combo_pre_para, A(KC_UP)),
-  COMBO(combo_next_para, A(KC_DOWN)),
   COMBO(combo_del, KC_DEL),
   COMBO(combo_delw, A(KC_DEL)),
   COMBO(combo_tab, KC_TAB),
@@ -1164,6 +1180,20 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_page_up, KC_PGUP),
   COMBO(combo_page_down, KC_PGDN),
   COMBO(combo_select_all, G(KC_A)),
+  COMBO(combo_scroll_up, MS_WHLU),
+  COMBO(combo_scroll_down, MS_WHLD),
+  COMBO(combo_hum_x, KC_X),
+  COMBO(combo_hum_q, KC_Q),
+  COMBO(combo_hum_p, KC_P),
+  COMBO(combo_hum_b, KC_B),
+  COMBO(combo_brc_paro, JP_LPRN),
+  COMBO(combo_brc_parc, JP_RPRN),
+  COMBO(combo_brc_sqbro, JP_LBRC),
+  COMBO(combo_brc_sqbrc, JP_RBRC),
+  COMBO(combo_brc_cubro, JP_LCBR),
+  COMBO(combo_brc_cubrc, JP_RCBR),
+  COMBO(combo_brc_anbro, JP_LABK),
+  COMBO(combo_brc_anbrc, JP_RABK),                
 };
 
 // caps word
@@ -1190,7 +1220,8 @@ bool caps_word_press_user(uint16_t keycode) {
 
 // key overides
 // SHIFT + ' = "
-const key_override_t comm_quo_override = ko_make_basic(MOD_MASK_SHIFT, JP_COMM, JP_QUOT);
+const key_override_t comm_quo_override = ko_make_basic(MOD_MASK_SHIFT, HS_COMM, JP_QUOT);
+const key_override_t comm_quo_override2 = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, JP_QUOT);
 const key_override_t dot_dquo_override = ko_make_basic(MOD_MASK_SHIFT, JP_DOT, JP_DQUO);
 const key_override_t min_ques_override = ko_make_basic(MOD_MASK_SHIFT, JP_MINS, JP_QUES);
 const key_override_t capsw_capsl_override = ko_make_basic(MOD_MASK_SHIFT, CW_TOGG, KC_CAPS);
@@ -1204,6 +1235,7 @@ const key_override_t copy_cut_override = ko_make_basic(MOD_MASK_CTRL, COPY, G(KC
 
 const key_override_t *key_overrides[] = {
     &comm_quo_override,
+    &comm_quo_override2,
     &dot_dquo_override,
     &min_ques_override,
     &capsw_capsl_override,
@@ -1212,7 +1244,13 @@ const key_override_t *key_overrides[] = {
     &copy_cut_override,
 };
 
-
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+    LAYOUT_split_3x5_3(
+        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 
+        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 
+        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 
+                  '*', '*', '*',  '*', '*', '*'
+    );
 
 // keymap
 
@@ -1220,8 +1258,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MAGICSTURDY] = LAYOUT_split_3x5_3(
            KC_X,     KC_M,    KC_L,    KC_C, KC_P,              KC_B,  QK_AREP,    KC_U,    KC_O,    KC_Q,
         HSSFT_S,  HSOPT_T, HSCMD_R, HSCTL_D, KC_Y,              KC_F,  HSCTL_N, HSCMD_E, HSOPT_A, HSSFT_I,
-           KC_V,     KC_K,    KC_J, HSHYP_G, KC_W,              KC_Z,  HSHYP_H, JP_COMM, JP_DOT,  JP_MINS,
-           _______,     NUM,  SYM,                              QK_REP,  OSS, _______
+           KC_V,     KC_K,  HS_J, HSHYP_G, KC_W,              KC_Z,  HSHYP_H, HS_COMM, JP_DOT,  JP_MINS,
+           KC_CAPS,     NUM,  SYM,                              QK_REP,  OSS, _______
   ),
   [_QWERTY] = LAYOUT_split_3x5_3(
            KC_Q,     KC_W,    KC_E,    KC_R,  KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
@@ -1287,7 +1325,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           KC_NUM,             KC_PSCR,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
       XXXXXXX, XXXXXXX, XXXXXXX, DF(_QWERTY),       KC_INS,             KC_SCRL,   KC_F5,   KC_F6,   KC_F7,   KC_F8,
       XXXXXXX, XXXXXXX, XXXXXXX, DF(_MAGICSTURDY), XXXXXXX,             KC_PAUS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,
-                                 XXXXXXX, XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX
+                                 _______, XXXXXXX, XXXXXXX,             KC_NUM, KC_INS, KC_APP
                               ),
   [_NUM_W] = LAYOUT_split_3x5_3(
       JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, C(KC_F2),           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
@@ -1296,10 +1334,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______,   TO(_MAGICSTURDY),  _NW_SPC,                 _NW_RET,  KC_0, _______
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
-      MEH(KC_X), MEH(KC_M), MEH(KC_L),  MEH(KC_C),  MEH(KC_P),           _______, _______, _______, _______, _______,
-      MEH(KC_S), MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  MEH(KC_7),           _______, _______, _______, _______, _______,
-      MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           _______, _______, _______, _______, _______, 
-                               _______,   KC_MCTL,  MEH(KC_SPC),         _______, _______, _______
+      MEH(KC_X), MEH(KC_M), MEH(KC_L),  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
+      MEH(KC_S), MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  MEH(KC_F),           KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
+      MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
+                               MEH(KC_Z),   KC_MCTL,  MEH(KC_SPC),         XXXXXXX, XXXXXXX, _______
                               )
 };
 
@@ -1316,17 +1354,18 @@ td_state_t cur_dance(tap_dance_state_t *state) {
 }
 
 // Initialize tap structure associated with example tap dance key
-static td_tap_t ql_tap_state = {
+static td_tap_t sn_tap_state = {
     .is_press_action = true,
     .state = TD_NONE
 };
 
 // Functions that control what our tap dance key does
-void ql_finished(tap_dance_state_t *state, void *user_data) {
-    ql_tap_state.state = cur_dance(state);
-    switch (ql_tap_state.state) {
-        case TD_SINGLE_TAP:
-            set_oneshot_mods(MOD_BIT(KC_LSFT));
+void sn_finished(tap_dance_state_t *state, void *user_data) {
+    sn_tap_state.state = cur_dance(state);
+    switch (sn_tap_state.state) {
+        case TD_SINGLE_TAP:            
+            if ( is_caps_word_on() ) { caps_word_off(); }
+            else { set_oneshot_mods(MOD_BIT(KC_LSFT)); }
             break;
         case TD_SINGLE_HOLD:
             layer_on(_NAV);
@@ -1336,17 +1375,19 @@ void ql_finished(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void ql_reset(tap_dance_state_t *state, void *user_data) {
+void sn_reset(tap_dance_state_t *state, void *user_data) {
     // If the key was held down and now is released then switch off the layer
-    if (ql_tap_state.state == TD_SINGLE_HOLD) {
+    if (sn_tap_state.state == TD_SINGLE_HOLD) {
         layer_off(_NAV);
     }
-    ql_tap_state.state = TD_NONE;
+    sn_tap_state.state = TD_NONE;
 }
+
+
 
 // Associate our tap dance key with its functionality
 tap_dance_action_t tap_dance_actions[] = {
-    [OSS_NAV] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ql_finished, ql_reset)
+  [OSS_NAV] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sn_finished, sn_reset)
 };
 
 
@@ -1379,11 +1420,3 @@ uint8_t combo_ref_from_layer(uint8_t layer){
     return layer;  // important if default is not in case.
 }
 
-char chordal_hold_handedness(keypos_t key) {
-    if (key.col == 0 || key.col == MATRIX_COLS - 1) {
-        return '*';  // Exempt the outer columns.
-    }
-    // On split keyboards, typically, the first half of the rows are on the
-    // left, and the other half are on the right.
-    return key.row < MATRIX_ROWS / 2 ? 'L' : 'R';
-}
