@@ -39,6 +39,7 @@ enum crkbd_layers {
     _SYM,
     _FUN,
     _NUM_W,
+    _SORCERY,
     _WIN,
 };
 
@@ -51,6 +52,8 @@ enum crkbd_layers {
 #define PASTE G(KC_V)
 #define UNDO G(KC_Z)
 #define COPY G(KC_C)
+#define CUT G(KC_X)
+#define PASTEW S(LAG(KC_V))
 
 #define TRON_NUM LT(_TRON_NUM,KC_BSPC)
 #define TRON_NAV MO(_NAV)
@@ -262,7 +265,10 @@ enum custom_keycodes {
     _EISU,
     _NW_SPC,
     _NW_RET,
-    SELWORD,    
+    SELWORD,
+    _PANIC,
+    _INAUD,
+    _UNISP,
 };
 
 // TAP DANCE
@@ -1062,7 +1068,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       layer_move(_MAGICSTURDY);
     }
     return false;
-  
+    case _PANIC: // to leave toggled layer
+    if (record->event.pressed) {
+      layer_move(_MAGICSTURDY);
+    }
+    else {
+       // do nothing 
+    }
+    return false;
+  case _INAUD:
+    if (record->event.pressed) {
+      // when keycode DFINE is pressed
+      SEND_STRING("[inaudible []]"); //[inaudible )
+      SEND_STRING(SS_TAP(X_LEFT)SS_TAP(X_LEFT));  // []] and center cursor
+    } else {
+      // when keycode DFINE is released
+    }
+   return false;
+   case _UNISP:
+    if (record->event.pressed) {
+      // when keycode DFINE is pressed
+      SEND_STRING("Unidentified speaker: "); //[inaudible )
+    } else {
+      // when keycode DFINE is released
+    }
+     return false;
   case _NW_RET: // to leave toggled layer
     if (record->event.pressed) {
       tap_code(KC_ENT);
@@ -1080,19 +1110,59 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // combos mappings
 
-const uint16_t PROGMEM combo_capsword[] = {SYM, QK_REP, COMBO_END};
+// system
 const uint16_t PROGMEM combo_qkboot[] = {KC_X, HSSFT_S, KC_V, COMBO_END};
 const uint16_t PROGMEM combo_qkreboot[] = {KC_P, KC_Y, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_qkeeprom[] = {KC_C, HSCTL_D, KC_G, COMBO_END};
+
+// layers
 const uint16_t PROGMEM combo_fun[] = {SYM, NUM, COMBO_END};
 const uint16_t PROGMEM combo_win[] = {QK_REP, OSS, COMBO_END};
+const uint16_t PROGMEM combo_numword[] = {NUM, OSS, COMBO_END};
+const uint16_t PROGMEM combo_os_num[] = {HSCMD_R, NUM, COMBO_END};
+const uint16_t PROGMEM combo_os_nav[] = {HSOPT_T, NUM, COMBO_END};
+const uint16_t PROGMEM combo_os_sym[] = {HSCTL_D, NUM, COMBO_END};
+
+// English 
 const uint16_t PROGMEM combo_sorcery[] = {KC_C, QK_AREP, COMBO_END};
+const uint16_t PROGMEM combo_capsword[] = {SYM, QK_REP, COMBO_END};
+
+// numword
+const uint16_t PROGMEM combo_nwret[] = {KC_4, KC_5, KC_6, COMBO_END};
+const uint16_t PROGMEM combo_panic[] = {JP_LBRC, JP_COLN, COMBO_END};
+
+// movement 
 const uint16_t PROGMEM combo_back_char[] = {HSHYP_G, HS_J, COMBO_END};
 const uint16_t PROGMEM combo_for_char[] = {HSHYP_H, HS_COMM, COMBO_END};
 const uint16_t PROGMEM combo_back_word[] = {KC_K, HS_J, COMBO_END};
 const uint16_t PROGMEM combo_for_word[] = {HS_COMM, JP_DOT, COMBO_END};
 const uint16_t PROGMEM combo_back_sent[] = {KC_K, HSHYP_G, COMBO_END};
 const uint16_t PROGMEM combo_for_sent[] = {HSHYP_H, JP_DOT, COMBO_END};
+const uint16_t PROGMEM combo_scroll_down[] = {HSCTL_N, KC_Z, COMBO_END};
+const uint16_t PROGMEM combo_scroll_up [] = {HSCTL_D,  KC_W, COMBO_END};
+const uint16_t PROGMEM combo_page_down[] = {HSOPT_A, HS_COMM, COMBO_END};
+const uint16_t PROGMEM combo_page_up [] = {HSOPT_T,  HS_J, COMBO_END};
+const uint16_t PROGMEM combo_down[] = {HSCTL_N, HSCMD_E, COMBO_END};
+const uint16_t PROGMEM combo_up[] = {HSCTL_D, HSCMD_R, COMBO_END};
+const uint16_t PROGMEM combo_up_para[] = {HSOPT_T, HSCMD_R, COMBO_END};
+const uint16_t PROGMEM combo_down_para[] = {HSOPT_A, HSCMD_E, COMBO_END};
+// j movement
+const uint16_t PROGMEM combo_jback_char[] = {TJ_SA, TJ_NI, COMBO_END};
+const uint16_t PROGMEM combo_jfor_char[] = {TJ_TSU, TJ_DOUTEN, COMBO_END};
+const uint16_t PROGMEM combo_jback_word[] = {TJ_RI, TJ_NI, COMBO_END};
+const uint16_t PROGMEM combo_jfor_word[] = {TJ_DOUTEN, TJ_KUTEN, COMBO_END};
+const uint16_t PROGMEM combo_jback_sent[] = {TJ_RI, TJ_SA, COMBO_END};
+const uint16_t PROGMEM combo_jfor_sent[] = {TJ_TSU, TJ_KUTEN, COMBO_END};
+const uint16_t PROGMEM combo_jscroll_down[] = {TJ_I, TJ_SU, COMBO_END};
+const uint16_t PROGMEM combo_jscroll_up [] = {TJ_TE,  TJ_NA, COMBO_END};
+const uint16_t PROGMEM combo_jpage_down[] = {TJ_SHI, TJ_DOUTEN, COMBO_END};
+const uint16_t PROGMEM combo_jpage_up [] = {TJ_TO,  TJ_NI, COMBO_END};
+const uint16_t PROGMEM combo_jdown[] = {TJ_I, TJ_U, COMBO_END};
+const uint16_t PROGMEM combo_jup[] = {TJ_TE, TJ_KA, COMBO_END};
+const uint16_t PROGMEM combo_jup_para[] = {TJ_TO, TJ_KA, COMBO_END};
+const uint16_t PROGMEM combo_jdown_para[] = {TJ_SHI, TJ_U, COMBO_END};
+
+// controls
 const uint16_t PROGMEM combo_delw[] = {HSOPT_T, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {SYM, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_tab[] = {HSOPT_T, HSHYP_G, COMBO_END};
@@ -1100,100 +1170,139 @@ const uint16_t PROGMEM combo_esc[] = {KC_M, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_bkspw[] = {HSCTL_N, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_bksp[] = {HSCTL_N, QK_REP, COMBO_END};
 const uint16_t PROGMEM combo_ret[] = {HSCTL_N, HSCMD_E, HSOPT_A, COMBO_END};
-const uint16_t PROGMEM combo_hiragana[] = {KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM combo_katakana[] = {KC_M, KC_O, COMBO_END};
-const uint16_t PROGMEM combo_spc[] = {HSOPT_T, HSCMD_R, HSCTL_D, COMBO_END};
+// j controls
+const uint16_t PROGMEM combo_jdelw[] = {TJ_TO, TJ_TE, COMBO_END};
+const uint16_t PROGMEM combo_jdel[] = {OSL(_TRON_RED), TJ_TE, COMBO_END};
+const uint16_t PROGMEM combo_jtab[] = {TJ_TO, TJ_SA, COMBO_END};
+const uint16_t PROGMEM combo_jesc[] = {TJ_RU, TJ_HA, COMBO_END};
+const uint16_t PROGMEM combo_jret[] = {TJ_I, TJ_U, TJ_SHI, COMBO_END};
+const uint16_t PROGMEM combo_jbkspw[] = {TJ_I, TJ_SHI, COMBO_END};
+const uint16_t PROGMEM combo_jbksp[] = {TJ_I, OSL(_TRON_BLUE), COMBO_END};
+
+
+// Japanese language
+const uint16_t PROGMEM combo_hiragana[] = {TJ_KO, TJ_KU, COMBO_END};
+const uint16_t PROGMEM combo_katakana[] = {TJ_RU, TJ_A, COMBO_END};
+const uint16_t PROGMEM combo_spc[] = {TJ_TO, TJ_KA, TJ_TE, COMBO_END};
 const uint16_t PROGMEM combo_eisu[] = {KC_M, KC_L, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_jeisu[] = {TJ_HA, TJ_KO, TJ_RU, COMBO_END};
 const uint16_t PROGMEM combo_kana[] = {QK_AREP, KC_U, KC_O, COMBO_END};
-const uint16_t PROGMEM combo_numword[] = {NUM, OSS, COMBO_END};
-const uint16_t PROGMEM combo_down[] = {HSCTL_N, HSCMD_E, COMBO_END};
-const uint16_t PROGMEM combo_up[] = {HSCTL_D, HSCMD_R, COMBO_END};
-const uint16_t PROGMEM combo_up_para[] = {HSOPT_T, HSCMD_R, COMBO_END};
-const uint16_t PROGMEM combo_down_para[] = {HSOPT_A, HSCMD_E, COMBO_END};
-const uint16_t PROGMEM combo_selword[] = {HSCTL_D, HSCTL_N, COMBO_END};
-const uint16_t PROGMEM combo_os_num[] = {HSCMD_R, HSCMD_E, COMBO_END};
-const uint16_t PROGMEM combo_os_nav[] = {HSOPT_T, HSOPT_A, COMBO_END};
-const uint16_t PROGMEM combo_os_sym[] = {HSSFT_S, HSSFT_I, COMBO_END};
+const uint16_t PROGMEM combo_jkana[] = {TJ_NO, TJ_KU, TJ_A, COMBO_END};
+
+// copy paste & shortcuts
 const uint16_t PROGMEM combo_undo[] = {SYM, KC_M, COMBO_END};
 const uint16_t PROGMEM combo_copy[] = {KC_M, KC_L, COMBO_END};
 const uint16_t PROGMEM combo_paste[] = {KC_L, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_cut[] = {KC_M, KC_L, SYM, COMBO_END};
+const uint16_t PROGMEM combo_pastew[] = {KC_L, KC_C, SYM, COMBO_END};
 const uint16_t PROGMEM combo_save[] = {SYM, HSOPT_T, COMBO_END};
-const uint16_t PROGMEM combo_page_down[] = {HSOPT_A, HS_COMM, COMBO_END};
-const uint16_t PROGMEM combo_page_up [] = {HSOPT_T,  HS_J, COMBO_END};
+// j copy paste & shortcuts
+const uint16_t PROGMEM combo_jundo[] = {OSL(_TRON_RED), TJ_RU, COMBO_END};
+const uint16_t PROGMEM combo_jcopy[] = {TJ_RU, TJ_KO, COMBO_END};
+const uint16_t PROGMEM combo_jpaste[] = {TJ_KO, TJ_HA, COMBO_END};
+const uint16_t PROGMEM combo_jcut[] = {TJ_RU, TJ_KO, OSL(_TRON_RED), COMBO_END};
+const uint16_t PROGMEM combo_jpastew[] = {TJ_KO, TJ_HA, OSL(_TRON_RED), COMBO_END};
+const uint16_t PROGMEM combo_jsave[] = {OSL(_TRON_RED), TJ_TO, COMBO_END};
+// misc
+const uint16_t PROGMEM combo_selword[] = {HSCTL_D, HSCTL_N, COMBO_END};
 const uint16_t PROGMEM combo_select_all[] = {HSOPT_A, QK_REP, COMBO_END};
-const uint16_t PROGMEM combo_scroll_down[] = {HSCTL_N, KC_Z, COMBO_END};
-const uint16_t PROGMEM combo_scroll_up [] = {HSCTL_D,  KC_W, COMBO_END};
-const uint16_t PROGMEM combo_hum_x [] = {HSSFT_S,  KC_V, COMBO_END};
-const uint16_t PROGMEM combo_hum_q [] = {HSSFT_I,  JP_MINS, COMBO_END};
-const uint16_t PROGMEM combo_hum_p [] = {KC_Y,  KC_W, COMBO_END};
-const uint16_t PROGMEM combo_hum_b [] = {KC_F,  KC_Z, COMBO_END};
-const uint16_t PROGMEM combo_brc_paro [] = {KC_C, HSCTL_D, COMBO_END};
-const uint16_t PROGMEM combo_brc_parc [] = {QK_AREP, HSCTL_N, COMBO_END};
-const uint16_t PROGMEM combo_brc_sqbro [] = {KC_L,  HSCMD_R, COMBO_END};
-const uint16_t PROGMEM combo_brc_sqbrc [] = {KC_U,  HSCMD_E, COMBO_END};
-const uint16_t PROGMEM combo_brc_cubro [] = {KC_M,  HSOPT_T, COMBO_END};
-const uint16_t PROGMEM combo_brc_cubrc [] = {KC_O,  HSOPT_A, COMBO_END};
-const uint16_t PROGMEM combo_brc_anbro [] = {KC_X,  HSSFT_S, COMBO_END};
-  const uint16_t PROGMEM combo_brc_anbrc [] = {KC_Q,  HSSFT_I, COMBO_END};
+
+
+
+
 
 // combo effects
 
-combo_t key_combos[COMBO_COUNT] = {
-  COMBO(combo_capsword, CW_TOGG),
+combo_t key_combos[] = {
+  // system
+
   COMBO(combo_qkboot, QK_BOOT),
   COMBO(combo_qkeeprom, EE_CLR),
   COMBO(combo_qkreboot, QK_RBT),
+  // layers
   COMBO(combo_fun, MO(_FUN)),
   COMBO(combo_win, MO(_WIN)),
-  COMBO(combo_sorcery, S(KC_NUBS)),
+  COMBO(combo_numword, TO(_NUM_W)),
+  COMBO(combo_os_num, OSL(_NUM)),
+  COMBO(combo_os_nav, OSL(_NAV)),
+  COMBO(combo_os_sym, OSL(_SYM)),
+  // English
+  COMBO(combo_sorcery, OSL(_SORCERY)),
+  COMBO(combo_capsword, CW_TOGG),
+  COMBO(combo_eisu, _EISU),
+  COMBO(combo_kana, _KANA),
+  // numword
+  COMBO(combo_panic, _PANIC),
+  COMBO(combo_nwret, _NW_RET),
+  // movement
   COMBO(combo_back_char, KC_LEFT),
   COMBO(combo_for_char, KC_RGHT),
   COMBO(combo_back_word, A(KC_LEFT)),
   COMBO(combo_for_word, A(KC_RGHT)),
   COMBO(combo_back_sent, KC_HOME),
   COMBO(combo_for_sent, KC_END),
-  COMBO(combo_del, KC_DEL),
+  COMBO(combo_scroll_up, MS_WHLU),
+  COMBO(combo_scroll_down, MS_WHLD),
+  COMBO(combo_page_up, KC_PGUP),
+  COMBO(combo_page_down, KC_PGDN),
+  COMBO(combo_up, KC_UP),
+  COMBO(combo_down, KC_DOWN),
+  COMBO(combo_up_para, A(KC_UP)),
+  COMBO(combo_down_para, A(KC_DOWN)),
+  // j movement
+  COMBO(combo_jback_char, KC_LEFT),
+  COMBO(combo_jfor_char, KC_RGHT),
+  COMBO(combo_jback_word, A(KC_LEFT)),
+  COMBO(combo_jfor_word, A(KC_RGHT)),
+  COMBO(combo_jback_sent, KC_HOME),
+  COMBO(combo_jfor_sent, KC_END),
+  COMBO(combo_jscroll_up, MS_WHLU),
+  COMBO(combo_jscroll_down, MS_WHLD),
+  COMBO(combo_jpage_up, KC_PGUP),
+  COMBO(combo_jpage_down, KC_PGDN),
+  COMBO(combo_jup, KC_UP),
+  COMBO(combo_jdown, KC_DOWN),
+  COMBO(combo_jup_para, A(KC_UP)),
+  COMBO(combo_jdown_para, A(KC_DOWN)),
+  // control
   COMBO(combo_delw, A(KC_DEL)),
+  COMBO(combo_del, KC_DEL),
   COMBO(combo_tab, KC_TAB),
   COMBO(combo_esc, KC_ESC),
   COMBO(combo_bksp, KC_BSPC),
   COMBO(combo_bkspw, A(KC_BSPC)),
   COMBO(combo_ret, KC_ENT),
+  // j controls
+  COMBO(combo_jdelw, A(KC_DEL)),
+  COMBO(combo_jdel, KC_DEL),
+  COMBO(combo_jtab, KC_TAB),
+  COMBO(combo_jesc, KC_ESC),
+  COMBO(combo_jbksp, KC_BSPC),
+  COMBO(combo_jbkspw, A(KC_BSPC)),
+  COMBO(combo_jret, KC_ENT),
+  // Japanese language
   COMBO(combo_hiragana, C(KC_J)),
   COMBO(combo_katakana, C(KC_K)),
   COMBO(combo_spc, KC_SPC),
-  COMBO(combo_eisu, _EISU),
-  COMBO(combo_kana, _KANA),
-  COMBO(combo_numword, TO(_NUM_W)),
-  COMBO(combo_up, KC_UP),
-  COMBO(combo_down, KC_DOWN),
-  COMBO(combo_up_para, A(KC_UP)),
-  COMBO(combo_down_para, A(KC_DOWN)),
-  COMBO(combo_selword, SELWORD),
-  COMBO(combo_os_num, OSL(_NUM)),
-  COMBO(combo_os_nav, OSL(_NAV)),
-  COMBO(combo_os_sym, OSL(_SYM)),
+  COMBO(combo_jeisu, _EISU),
+  COMBO(combo_jkana, _KANA),
+  // copy paste & shortcuts
   COMBO(combo_undo, UNDO),
   COMBO(combo_copy, COPY),
   COMBO(combo_paste, PASTE),
+  COMBO(combo_cut, CUT),
+  COMBO(combo_pastew, PASTEW),  
   COMBO(combo_save, G(KC_S)),
-  COMBO(combo_page_up, KC_PGUP),
-  COMBO(combo_page_down, KC_PGDN),
+  // j copy paste & shortcuts
+  COMBO(combo_jundo, UNDO),
+  COMBO(combo_jcopy, COPY),
+  COMBO(combo_jpaste, PASTE),
+  COMBO(combo_jcut, CUT),
+  COMBO(combo_jpastew, PASTEW),  
+  COMBO(combo_jsave, G(KC_S)),
+  // misc
+  COMBO(combo_selword, SELWORD),
   COMBO(combo_select_all, G(KC_A)),
-  COMBO(combo_scroll_up, MS_WHLU),
-  COMBO(combo_scroll_down, MS_WHLD),
-  COMBO(combo_hum_x, KC_X),
-  COMBO(combo_hum_q, KC_Q),
-  COMBO(combo_hum_p, KC_P),
-  COMBO(combo_hum_b, KC_B),
-  COMBO(combo_brc_paro, JP_LPRN),
-  COMBO(combo_brc_parc, JP_RPRN),
-  COMBO(combo_brc_sqbro, JP_LBRC),
-  COMBO(combo_brc_sqbrc, JP_RBRC),
-  COMBO(combo_brc_cubro, JP_LCBR),
-  COMBO(combo_brc_cubrc, JP_RCBR),
-  COMBO(combo_brc_anbro, JP_LABK),
-  COMBO(combo_brc_anbrc, JP_RABK),                
 };
 
 // caps word
@@ -1259,7 +1368,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_X,     KC_M,    KC_L,    KC_C, KC_P,              KC_B,  QK_AREP,    KC_U,    KC_O,    KC_Q,
         HSSFT_S,  HSOPT_T, HSCMD_R, HSCTL_D, KC_Y,              KC_F,  HSCTL_N, HSCMD_E, HSOPT_A, HSSFT_I,
            KC_V,     KC_K,  HS_J, HSHYP_G, KC_W,              KC_Z,  HSHYP_H, HS_COMM, JP_DOT,  JP_MINS,
-           KC_CAPS,     NUM,  SYM,                              QK_REP,  OSS, _______
+           KC_CAPS,     NUM,  SYM,                              QK_REP,  OSS, _INAUD
   ),
   [_QWERTY] = LAYOUT_split_3x5_3(
            KC_Q,     KC_W,    KC_E,    KC_R,  KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
@@ -1287,7 +1396,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     ),
   [_TRON_PURPLE] = LAYOUT_split_3x5_3(
         TJ_PI, _______, _______,   TJ_PA,   TJ_PO,            _______, _______, _______, _______, _______,
-      _______, _______, _______, _______,   TJ_PU,            _______, C(JP_J), C(JP_K), C(JP_L), C(JP_SCLN),
+      _______, _______, _______, _______,   TJ_PU,            _______, _______, _______, _______, _______,
       _______, _______, _______, _______,   TJ_PE,            _______, _______, _______, _______, _______,
                         _______, _______, _______,            _______, _______, _______
                                     ),
@@ -1298,26 +1407,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      _______, _______, MO(_TRON_SYM),                           KC_ENT, TJS_N0, _______
                                     ),
   [_TRON_SYM] = LAYOUT_split_3x5_3(
-      _______, _______, _______, _______,  _______,            _______, TJS_HASH, TJS_LT, TJS_MT, TJS_CARET,
-      _______, _______, _______, _______,  _______,            TJS_TILDE, TJS_PRNT, TJS_LBRC, TJS_RBRC, TJS_GRAVE,
+      _______, _______, _______, _______,  _______,            _______, TJS_DQT, TJS_LT, TJS_MT, TJS_CARET,
+      _______, _______, _______, _______,  _______,            TJS_TILDE, TJS_SQT, TJS_LBRC, TJS_RBRC, TJS_GRAVE,
       _______, _______, _______, _______,  _______,            _______, TJS_YEN, TJS_DLLR, _______, _______,
                         _______, _______, _______,            _______, _______, _______
                                     ),
   [_NUM] = LAYOUT_split_3x5_3(
       JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, C(KC_F2),           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
-      JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, JP_AT,              JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
-      TJS_QMARK, JP_UNDS, JP_DQUO, JP_QUOT, JP_PIPE,            JP_EQL,   KC_1, KC_2, KC_3,  KC_DOT,
-                        _______,     NUM,  _______,           KC_ENT,  KC_0, _______
+      JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, JP_HASH,            JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
+      TJS_QMARK, JP_UNDS, JP_PERC, JP_AT, JP_PIPE,            JP_EQL,   KC_1, KC_2, KC_3,  KC_DOT,
+                        _______,     NUM,  _______,           _______,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      G(KC_Z), G(KC_X), G(KC_C), PASTE,   LSG(KC_Z),          LSG(KC_5), OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, C(KC_F4),          XXXXXXX, KC_RCTL, KC_RGUI, KC_RALT, KC_RSFT,
-      KC_HOME, KC_PGUP, KC_PGDN, KC_END,    XXXXXXX,          HYPR(KC_B), KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE,
-                        _______, KC_ESC,     KC_TAB,          _______, _______, _______
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,    LSG(KC_5), OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, C(KC_F4),      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
+      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   XXXXXXX,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
+                        _______, KC_ESC,    KC_TAB,      _______, _______, _______
                               ),
   [_SYM] = LAYOUT_split_3x5_3(
-       _______,   _______, G(KC_C),    PASTE,  S(LAG(KC_V)),         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
-       _______, A(KC_DEL), _______,   KC_DEL,    HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
+       _______,   _______, G(KC_C),    PASTE,        KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
+       _______, A(KC_DEL), KC_PENT,   KC_DEL,    HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
        JP_CAPS,     DFINE,   GTRNS,    GOOGL,       KC_LPAD,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
                                 XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  _______, _______
                               ),
@@ -1329,9 +1438,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               ),
   [_NUM_W] = LAYOUT_split_3x5_3(
       JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, C(KC_F2),           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
-      JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, JP_AT,              JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
-      JP_QUES, JP_UNDS, JP_DQUO, JP_QUOT, JP_PIPE,            JP_EQL,   KC_1, KC_2, KC_3,  KC_DOT,
-      _______,   TO(_MAGICSTURDY),  _NW_SPC,                 _NW_RET,  KC_0, _______
+      JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, TJS_HASH,           JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
+      JP_QUES, JP_UNDS, JP_PERC, JP_AT,    JP_PIPE,            JP_EQL,  KC_1, KC_2, KC_3,  KC_DOT,
+                        _______, _______,  _NW_SPC,           _______,  KC_0, _______
+                              ),
+    [_SORCERY] = LAYOUT_split_3x5_3(
+      _______, _______, _______, _______, _______,     _______, _______,  _UNISP, _______, _______,
+      _______, _______, _______, _______, _______,     _______, _______, _______, _______,  _INAUD,
+      _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______,
+      _______, _______, _______,     _______, _______, _______
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
       MEH(KC_X), MEH(KC_M), MEH(KC_L),  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,

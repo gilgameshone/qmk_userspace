@@ -24,10 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
-// #define MASTER_RIGHT
-// #define EE_HANDS
-
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
     #define RGBLIGHT_EFFECT_RAINBOW_MOOD
@@ -50,9 +46,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ONESHOT_TAP_TOGGLE 5  /* Tapping this number of times holds the key until tapped once again. */
 #define ONESHOT_TIMEOUT 2000  /* Time (in ms) before the one shot key is released */
 
-#define COMBO_COUNT 45
+
 #define COMBO_TERM 30
-#define COMBO_ONLY_FROM_LAYER 0
 
 // Configure the global tapping term (default: 200ms)
 #define TAPPING_TERM 250
@@ -63,3 +58,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define LAYER_LOCK_IDLE_TIMEOUT 60000
 #define LAYER_STATE_32BIT
+#define CHORDAL_HOLD
+#define PERMISSIVE_HOLD
+#define CAPS_WORD_INVERT_ON_SHIFT
+#define FLOW_TAP_TERM 150
