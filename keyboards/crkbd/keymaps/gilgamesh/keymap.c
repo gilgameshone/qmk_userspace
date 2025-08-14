@@ -268,6 +268,7 @@ enum custom_keycodes {
     SELWORD,
     _PANIC,
     _INAUD,
+    _JPAUD,
     _UNISP,
 };
 
@@ -1085,6 +1086,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       // when keycode DFINE is released
     }
    return false;
+  case _JPAUD:
+    if (record->event.pressed) {
+      // when keycode DFINE is pressed
+      SEND_STRING("[Japanese []]"); //[inaudible )
+      SEND_STRING(SS_TAP(X_LEFT)SS_TAP(X_LEFT));  // []] and center cursor
+    } else {
+      // when keycode DFINE is released
+    }
+   return false;
    case _UNISP:
     if (record->event.pressed) {
       // when keycode DFINE is pressed
@@ -1445,7 +1455,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SORCERY] = LAYOUT_split_3x5_3(
       _______, _______, _______, _______, _______,     _______, _______,  _UNISP, _______, _______,
       _______, _______, _______, _______, _______,     _______, _______, _______, _______,  _INAUD,
-      _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______,
+      _______, _______, _JPAUD,  _______, _______,     _______, _______, _______, _______, _______,
       _______, _______, _______,     _______, _______, _______
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
