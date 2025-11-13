@@ -47,7 +47,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ONESHOT_TIMEOUT 2000  /* Time (in ms) before the one shot key is released */
 
 
-#define COMBO_TERM 30
+#define COMBO_TERM 28
 
 // Configure the global tapping term (default: 200ms)
 #define TAPPING_TERM 250

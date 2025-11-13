@@ -1138,84 +1138,76 @@ const uint16_t PROGMEM combo_sorcery[] = {KC_C, QK_AREP, COMBO_END};
 const uint16_t PROGMEM combo_capsword[] = {SYM, QK_REP, COMBO_END};
 
 // numword
-const uint16_t PROGMEM combo_nwret[] = {KC_4, KC_5, KC_6, COMBO_END};
-const uint16_t PROGMEM combo_panic[] = {JP_LBRC, JP_COLN, COMBO_END};
+const uint16_t PROGMEM combo_nwret[] = {JP_DOT, HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_panic[] = {KC_X, HSSFT_S, COMBO_END};
 
 // movement 
-const uint16_t PROGMEM combo_back_char[] = {HSHYP_G, HS_J, COMBO_END};
-const uint16_t PROGMEM combo_for_char[] = {HSHYP_H, HS_COMM, COMBO_END};
-const uint16_t PROGMEM combo_back_word[] = {KC_K, HS_J, COMBO_END};
-const uint16_t PROGMEM combo_for_word[] = {HS_COMM, JP_DOT, COMBO_END};
-const uint16_t PROGMEM combo_back_sent[] = {KC_K, HSHYP_G, COMBO_END};
-const uint16_t PROGMEM combo_for_sent[] = {HSHYP_H, JP_DOT, COMBO_END};
+const uint16_t PROGMEM combo_back_char[] = {HSHYP_G, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_for_char[] = {HSHYP_H, KC_Z, COMBO_END};
+const uint16_t PROGMEM combo_back_word[] = {HSCMD_R, HS_J, COMBO_END};
+const uint16_t PROGMEM combo_for_word[] = {HS_COMM, HSCMD_E, COMBO_END};
+const uint16_t PROGMEM combo_back_sent[] = {KC_Y, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_for_sent[] = {KC_Z, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_scroll_down[] = {HSCTL_N, KC_Z, COMBO_END};
 const uint16_t PROGMEM combo_scroll_up [] = {HSCTL_D,  KC_W, COMBO_END};
 const uint16_t PROGMEM combo_page_down[] = {HSOPT_A, HS_COMM, COMBO_END};
 const uint16_t PROGMEM combo_page_up [] = {HSOPT_T,  HS_J, COMBO_END};
-const uint16_t PROGMEM combo_down[] = {HSCTL_N, HSCMD_E, COMBO_END};
-const uint16_t PROGMEM combo_up[] = {HSCTL_D, HSCMD_R, COMBO_END};
-const uint16_t PROGMEM combo_up_para[] = {HSOPT_T, HSCMD_R, COMBO_END};
-const uint16_t PROGMEM combo_down_para[] = {HSOPT_A, HSCMD_E, COMBO_END};
+const uint16_t PROGMEM combo_down[] = {HSCTL_N, HSHYP_H, COMBO_END};
+const uint16_t PROGMEM combo_up[] = {HSCTL_D, HSHYP_G, COMBO_END};
+
 // j movement
-const uint16_t PROGMEM combo_jback_char[] = {TJ_SA, TJ_NI, COMBO_END};
-const uint16_t PROGMEM combo_jfor_char[] = {TJ_TSU, TJ_DOUTEN, COMBO_END};
-const uint16_t PROGMEM combo_jback_word[] = {TJ_RI, TJ_NI, COMBO_END};
-const uint16_t PROGMEM combo_jfor_word[] = {TJ_DOUTEN, TJ_KUTEN, COMBO_END};
-const uint16_t PROGMEM combo_jback_sent[] = {TJ_RI, TJ_SA, COMBO_END};
-const uint16_t PROGMEM combo_jfor_sent[] = {TJ_TSU, TJ_KUTEN, COMBO_END};
+const uint16_t PROGMEM combo_jback_char[] = {TJ_SA, TJ_NA, COMBO_END};
+const uint16_t PROGMEM combo_jfor_char[] = {TJ_SU, TJ_TSU, COMBO_END};
+const uint16_t PROGMEM combo_jback_word[] = {TJ_KA, TJ_NI, COMBO_END};
+const uint16_t PROGMEM combo_jfor_word[] = {TJ_DOUTEN, TJ_U, COMBO_END};
+const uint16_t PROGMEM combo_jback_sent[] = {TJ_MO, TJ_NA, COMBO_END};
+const uint16_t PROGMEM combo_jfor_sent[] = {TJ_WO, TJ_SU, COMBO_END};
 const uint16_t PROGMEM combo_jscroll_down[] = {TJ_I, TJ_SU, COMBO_END};
 const uint16_t PROGMEM combo_jscroll_up [] = {TJ_TE,  TJ_NA, COMBO_END};
 const uint16_t PROGMEM combo_jpage_down[] = {TJ_SHI, TJ_DOUTEN, COMBO_END};
 const uint16_t PROGMEM combo_jpage_up [] = {TJ_TO,  TJ_NI, COMBO_END};
-const uint16_t PROGMEM combo_jdown[] = {TJ_I, TJ_U, COMBO_END};
-const uint16_t PROGMEM combo_jup[] = {TJ_TE, TJ_KA, COMBO_END};
-const uint16_t PROGMEM combo_jup_para[] = {TJ_TO, TJ_KA, COMBO_END};
-const uint16_t PROGMEM combo_jdown_para[] = {TJ_SHI, TJ_U, COMBO_END};
+const uint16_t PROGMEM combo_jdown[] = {TJ_I, TJ_TSU, COMBO_END};
+const uint16_t PROGMEM combo_jup[] = {TJ_TE, TJ_SA, COMBO_END};
+
 
 // controls
-const uint16_t PROGMEM combo_delw[] = {HSOPT_T, HSCTL_D, COMBO_END};
-const uint16_t PROGMEM combo_del[] = {SYM, HSCTL_D, COMBO_END};
-const uint16_t PROGMEM combo_tab[] = {HSOPT_T, HSHYP_G, COMBO_END};
-const uint16_t PROGMEM combo_esc[] = {KC_M, KC_C, COMBO_END};
-const uint16_t PROGMEM combo_bkspw[] = {HSCTL_N, HSOPT_A, COMBO_END};
-const uint16_t PROGMEM combo_bksp[] = {HSCTL_N, QK_REP, COMBO_END};
-const uint16_t PROGMEM combo_ret[] = {HSCTL_N, HSCMD_E, HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_delw[] = {KC_Y, HSCTL_D, COMBO_END};
+const uint16_t PROGMEM combo_tab[] = {HSSFT_S, KC_V, COMBO_END};
+const uint16_t PROGMEM combo_esc[] = {KC_X, HSSFT_S, COMBO_END};
+const uint16_t PROGMEM combo_bkspw[] = {KC_F, HSCTL_N, COMBO_END};
+const uint16_t PROGMEM combo_ret[] = {JP_DOT, HSOPT_A, COMBO_END};
 // j controls
-const uint16_t PROGMEM combo_jdelw[] = {TJ_TO, TJ_TE, COMBO_END};
-const uint16_t PROGMEM combo_jdel[] = {OSL(_TRON_RED), TJ_TE, COMBO_END};
-const uint16_t PROGMEM combo_jtab[] = {TJ_TO, TJ_SA, COMBO_END};
-const uint16_t PROGMEM combo_jesc[] = {TJ_RU, TJ_HA, COMBO_END};
-const uint16_t PROGMEM combo_jret[] = {TJ_I, TJ_U, TJ_SHI, COMBO_END};
-const uint16_t PROGMEM combo_jbkspw[] = {TJ_I, TJ_SHI, COMBO_END};
-const uint16_t PROGMEM combo_jbksp[] = {TJ_I, OSL(_TRON_BLUE), COMBO_END};
+
+const uint16_t PROGMEM combo_jdel[] = {TJ_MO, TJ_TE, COMBO_END};
+const uint16_t PROGMEM combo_jtab[] = {TJ_MA, TJ_TA, COMBO_END};
+const uint16_t PROGMEM combo_jesc[] = {TJ_RA, TJ_TA, COMBO_END};
+const uint16_t PROGMEM combo_jret[] = {TJ_KUTEN, TJ_SHI, COMBO_END};
+const uint16_t PROGMEM combo_jbkspw[] = {TJ_WO, TJ_I, COMBO_END};
+
 
 
 // Japanese language
-const uint16_t PROGMEM combo_hiragana[] = {TJ_KO, TJ_KU, COMBO_END};
-const uint16_t PROGMEM combo_katakana[] = {TJ_RU, TJ_A, COMBO_END};
-const uint16_t PROGMEM combo_spc[] = {TJ_TO, TJ_KA, TJ_TE, COMBO_END};
-const uint16_t PROGMEM combo_eisu[] = {KC_M, KC_L, KC_C, COMBO_END};
-const uint16_t PROGMEM combo_jeisu[] = {TJ_HA, TJ_KO, TJ_RU, COMBO_END};
-const uint16_t PROGMEM combo_kana[] = {QK_AREP, KC_U, KC_O, COMBO_END};
-const uint16_t PROGMEM combo_jkana[] = {TJ_NO, TJ_KU, TJ_A, COMBO_END};
+const uint16_t PROGMEM combo_hiragana[] = {TJ_MO, TJ_XYO, COMBO_END};
+const uint16_t PROGMEM combo_katakana[] = {TJ_KI, TJ_WO, COMBO_END};
+const uint16_t PROGMEM combo_spc[] = {TJ_TO, TJ_RI, COMBO_END};
+const uint16_t PROGMEM combo_eisu[] = {HSCTL_D, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_jeisu[] = {TJ_HA, TJ_TE, COMBO_END};
+const uint16_t PROGMEM combo_kana[] = {QK_AREP, HSCTL_N, COMBO_END};
+const uint16_t PROGMEM combo_jkana[] = {TJ_NO, TJ_I, COMBO_END};
 
 // copy paste & shortcuts
-const uint16_t PROGMEM combo_undo[] = {SYM, KC_M, COMBO_END};
-const uint16_t PROGMEM combo_copy[] = {KC_M, KC_L, COMBO_END};
-const uint16_t PROGMEM combo_paste[] = {KC_L, KC_C, COMBO_END};
-const uint16_t PROGMEM combo_cut[] = {KC_M, KC_L, SYM, COMBO_END};
-const uint16_t PROGMEM combo_pastew[] = {KC_L, KC_C, SYM, COMBO_END};
-const uint16_t PROGMEM combo_save[] = {SYM, HSOPT_T, COMBO_END};
+const uint16_t PROGMEM combo_undo[] = {KC_C, KC_P, COMBO_END};
+const uint16_t PROGMEM combo_copy[] = {KC_M, HSOPT_T, COMBO_END};
+const uint16_t PROGMEM combo_paste[] = {KC_L, HSCMD_R, COMBO_END};
+const uint16_t PROGMEM combo_save[] = {KC_O, HSOPT_A, COMBO_END};
 // j copy paste & shortcuts
-const uint16_t PROGMEM combo_jundo[] = {OSL(_TRON_RED), TJ_RU, COMBO_END};
-const uint16_t PROGMEM combo_jcopy[] = {TJ_RU, TJ_KO, COMBO_END};
-const uint16_t PROGMEM combo_jpaste[] = {TJ_KO, TJ_HA, COMBO_END};
-const uint16_t PROGMEM combo_jcut[] = {TJ_RU, TJ_KO, OSL(_TRON_RED), COMBO_END};
-const uint16_t PROGMEM combo_jpastew[] = {TJ_KO, TJ_HA, OSL(_TRON_RED), COMBO_END};
-const uint16_t PROGMEM combo_jsave[] = {OSL(_TRON_RED), TJ_TO, COMBO_END};
+const uint16_t PROGMEM combo_jundo[] = {TJ_HA, TJ_XYO, COMBO_END};
+const uint16_t PROGMEM combo_jcopy[] = {TJ_RU, TJ_TO, COMBO_END};
+const uint16_t PROGMEM combo_jpaste[] = {TJ_KO, TJ_KA, COMBO_END};
+const uint16_t PROGMEM combo_jsave[] = {TJ_A, TJ_SHI, COMBO_END};
 // misc
 const uint16_t PROGMEM combo_selword[] = {HSCTL_D, HSCTL_N, COMBO_END};
-const uint16_t PROGMEM combo_select_all[] = {HSOPT_A, QK_REP, COMBO_END};
+const uint16_t PROGMEM combo_select_all[] = {HSSFT_I, JP_MINS, COMBO_END};
 
 
 
@@ -1257,8 +1249,7 @@ combo_t key_combos[] = {
   COMBO(combo_page_down, KC_PGDN),
   COMBO(combo_up, KC_UP),
   COMBO(combo_down, KC_DOWN),
-  COMBO(combo_up_para, A(KC_UP)),
-  COMBO(combo_down_para, A(KC_DOWN)),
+
   // j movement
   COMBO(combo_jback_char, KC_LEFT),
   COMBO(combo_jfor_char, KC_RGHT),
@@ -1272,22 +1263,18 @@ combo_t key_combos[] = {
   COMBO(combo_jpage_down, KC_PGDN),
   COMBO(combo_jup, KC_UP),
   COMBO(combo_jdown, KC_DOWN),
-  COMBO(combo_jup_para, A(KC_UP)),
-  COMBO(combo_jdown_para, A(KC_DOWN)),
   // control
-  COMBO(combo_delw, A(KC_DEL)),
-  COMBO(combo_del, KC_DEL),
+  
+  
   COMBO(combo_tab, KC_TAB),
   COMBO(combo_esc, KC_ESC),
-  COMBO(combo_bksp, KC_BSPC),
   COMBO(combo_bkspw, A(KC_BSPC)),
   COMBO(combo_ret, KC_ENT),
   // j controls
-  COMBO(combo_jdelw, A(KC_DEL)),
+  
   COMBO(combo_jdel, KC_DEL),
   COMBO(combo_jtab, KC_TAB),
   COMBO(combo_jesc, KC_ESC),
-  COMBO(combo_jbksp, KC_BSPC),
   COMBO(combo_jbkspw, A(KC_BSPC)),
   COMBO(combo_jret, KC_ENT),
   // Japanese language
@@ -1300,15 +1287,11 @@ combo_t key_combos[] = {
   COMBO(combo_undo, UNDO),
   COMBO(combo_copy, COPY),
   COMBO(combo_paste, PASTE),
-  COMBO(combo_cut, CUT),
-  COMBO(combo_pastew, PASTEW),  
   COMBO(combo_save, G(KC_S)),
   // j copy paste & shortcuts
   COMBO(combo_jundo, UNDO),
   COMBO(combo_jcopy, COPY),
   COMBO(combo_jpaste, PASTE),
-  COMBO(combo_jcut, CUT),
-  COMBO(combo_jpastew, PASTEW),  
   COMBO(combo_jsave, G(KC_S)),
   // misc
   COMBO(combo_selword, SELWORD),
