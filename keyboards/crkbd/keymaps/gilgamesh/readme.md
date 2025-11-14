@@ -14,7 +14,7 @@ The base layer uses a modified Magic Sturdy for the alpha arrangement. The shift
  │  X   M   L   C   P  │ │  B   ★   U   O   Q  │ 
  │  S   T   R   D   Y  | |  F   N   E   A   I  │ 
  │  V   K   J   G   W  │ │  Z   H  ',  ".  ?-  │ 
- ╰─────────╮  BKSP SPC │ │ REP  SHFT ╭─────────╯
+ ╰─────────╮  ⌫ ␣ │ │ ®  ⇧ ╭─────────╯
            ╰───────────╯ ╰───────────╯
                    ╰─CapsWord─╯
 ```
@@ -74,30 +74,42 @@ Nav has some available realestate, but the hold key to access it gets used heavi
 
 Combo use has proliferated to reduce thumb-holding strain. Probably best view visually. 
 
-Symetrical combos are:
-Capsword,
-Eisu,
-Kana,
-Magic 2 (Sorcery),
-Hiragana,
-Katakana.
+xs = esc ⎋
+mt = copy ⌘C
+lr = paste ⌘V
+cd = eisu 英数
+py = hiragana ひらがな
+sv = tab ↹ 
+tk = space 
+rj = backward word ⌥ ← 
+dg = up ↑
+dy = delete word forward ⌥ ⌦
+yw = home ⇱
+cp = undo ⌘Z
+gw = left ←
 
-One hand combos are: 
-Tab,
-Space,
-Esc,
-Up,
-Left,
-Home,
-Backspace,
-Return,
-Down,
-Right,
-End.
+bf =  katakana カタカナ
+★n = kana かな
+fn = backspace word ⌥ ⌫
+fz = end ⇲
+zh = right →
+nh = down ↓
+e, = forward word ⌥ →
+a. = return ⏎
+i- = select all ⌘A
+oa = save ⌘S
 
-Thumb combos simulate third thumb key (as it was not comfortable):
-Function keys, 
-and window manipulation.
+␣ ® = capsword
+⌫ ⇧ = numword
+
+★c = sorcery 
+dn = select word
+
+qi- = ble layer
+⌫ ␣ = fn layer 
+® ⇧ = meh layer
+
+
 
 
 ## Japanese JIS kana Tron arrangement
