@@ -50,7 +50,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define COMBO_TERM 28
 
 // Configure the global tapping term (default: 200ms)
-#define TAPPING_TERM 250
+#define TAPPING_TERM 300
 #define TAPPING_TERM_PER_KEY
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
@@ -59,6 +59,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LAYER_LOCK_IDLE_TIMEOUT 60000
 #define LAYER_STATE_32BIT
 #define CHORDAL_HOLD
-#define PERMISSIVE_HOLD
 #define CAPS_WORD_INVERT_ON_SHIFT
 #define FLOW_TAP_TERM 150
