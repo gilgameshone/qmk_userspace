@@ -49,11 +49,11 @@ enum crkbd_layers {
 
 #define FUN MO(_FUN)
 
-#define PASTE G(KC_V)
-#define UNDO G(KC_Z)
-#define COPY G(KC_C)
-#define CUT G(KC_X)
-#define PASTEW S(LAG(KC_V))
+#define PASTE C(KC_V)
+#define UNDO C(KC_Z)
+#define COPY C(KC_C)
+#define CUT C(KC_X)
+#define PASTEW S(LC(KC_V))
 
 #define TRON_NUM LT(_TRON_NUM,KC_BSPC)
 #define TRON_NAV MO(_NAV)
@@ -1239,8 +1239,8 @@ combo_t key_combos[] = {
   // movement
   COMBO(combo_back_char, KC_LEFT),
   COMBO(combo_for_char, KC_RGHT),
-  COMBO(combo_back_word, A(KC_LEFT)),
-  COMBO(combo_for_word, A(KC_RGHT)),
+  COMBO(combo_back_word, C(KC_LEFT)),
+  COMBO(combo_for_word, C(KC_RGHT)),
   COMBO(combo_back_sent, KC_HOME),
   COMBO(combo_for_sent, KC_END),
   COMBO(combo_scroll_up, MS_WHLU),
@@ -1253,8 +1253,8 @@ combo_t key_combos[] = {
   // j movement
   COMBO(combo_jback_char, KC_LEFT),
   COMBO(combo_jfor_char, KC_RGHT),
-  COMBO(combo_jback_word, A(KC_LEFT)),
-  COMBO(combo_jfor_word, A(KC_RGHT)),
+  COMBO(combo_jback_word, C(KC_LEFT)),
+  COMBO(combo_jfor_word, C(KC_RGHT)),
   COMBO(combo_jback_sent, KC_HOME),
   COMBO(combo_jfor_sent, KC_END),
   COMBO(combo_jscroll_up, MS_WHLU),
@@ -1268,18 +1268,18 @@ combo_t key_combos[] = {
   
   COMBO(combo_tab, KC_TAB),
   COMBO(combo_esc, KC_ESC),
-  COMBO(combo_bkspw, A(KC_BSPC)),
+  COMBO(combo_bkspw, C(KC_BSPC)),
   COMBO(combo_ret, KC_ENT),
   // j controls
   
   COMBO(combo_jdel, KC_DEL),
   COMBO(combo_jtab, KC_TAB),
   COMBO(combo_jesc, KC_ESC),
-  COMBO(combo_jbkspw, A(KC_BSPC)),
+  COMBO(combo_jbkspw, C(KC_BSPC)),
   COMBO(combo_jret, KC_ENT),
   // Japanese language
-  COMBO(combo_hiragana, C(KC_J)),
-  COMBO(combo_katakana, C(KC_K)),
+  COMBO(combo_hiragana, (KC_F6)),
+  COMBO(combo_katakana, (KC_F7)),
   COMBO(combo_spc, KC_SPC),
   COMBO(combo_jeisu, _EISU),
   COMBO(combo_jkana, _KANA),
@@ -1287,12 +1287,12 @@ combo_t key_combos[] = {
   COMBO(combo_undo, UNDO),
   COMBO(combo_copy, COPY),
   COMBO(combo_paste, PASTE),
-  COMBO(combo_save, G(KC_S)),
+  COMBO(combo_save, C(KC_S)),
   // j copy paste & shortcuts
   COMBO(combo_jundo, UNDO),
   COMBO(combo_jcopy, COPY),
   COMBO(combo_jpaste, PASTE),
-  COMBO(combo_jsave, G(KC_S)),
+  COMBO(combo_jsave, C(KC_S)),
   // misc
   COMBO(combo_selword, SELWORD),
   COMBO(combo_select_all, G(KC_A)),
