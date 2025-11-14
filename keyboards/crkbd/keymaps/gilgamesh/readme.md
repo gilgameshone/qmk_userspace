@@ -40,8 +40,8 @@ The second magic key `☆` (Sorcery) can be accessed by pressing `★` and `C` a
 ```
  ╭─────────────────────╮ ╭─────────────────────╮
  │  !   [   ]   : C-F2 │ │  +   7   8   9   *  │ 
- │  &   (   )   ;   @  | |  -   4   5   6   /  │ 
- │  ?   _   "   '   |  │ │  =   1   2   3   .  │ 
+ │  &   (   )   ;   #  | |  -   4   5   6   /  │ 
+ │  ?   _   %   @   |  │ │  =   1   2   3   .  │ 
  ╰─────────╮           │ │ RET  0  ╭───────────╯
            ╰───────────╯ ╰─────────╯
 ```
@@ -52,9 +52,9 @@ This layer has some realestate available. `aPst` here pastes without formatting.
 
 ```
  ╭─────────────────────────╮ ╭─────────────────────╮
- │            Cpy Pst aPst │ │  °   #   <   >   ^  │ 
- │      M-DEL     DEL Ynk  | |  ~   %   {   }   `  │ 
- │ Caps def   gTr Ggl      │ │  §   ¥   $   £   €  │ 
+ │ lock fndPr find  fndNx  │ │  °   #   <   >   ^  │ 
+ │ rstZ ZoomI ZoomO DEL ynk| |  ~   %   {   }   `  │ 
+ │ Caps def   gTr   Ggl    │ │  §   ¥   $   £   €  │ 
  ╰───────────╮             │ │         ╭───────────╯
              ╰─────────────╯ ╰─────────╯
 ```
@@ -63,10 +63,10 @@ This layer has some realestate available. `aPst` here pastes without formatting.
 
 Nav has some available realestate, but the hold key to access it gets used heavily. `Rwd` uses Alfred to rewind the media player slightly. 
 ```
- ╭─────────────────────╮ ╭─────────────────────╮
- │ Und Cut Cpy Pst Rdo │ │ Ssel    Eis Kan     │ 
- │ ←   ↑   ↓   →       | |     Ctl Cmd Opt Sft │ 
- │ Hme PgD PgU End     │ │ Rwd Pse vDn vUp Mut │ 
+ ╭──────────────────────╮ ╭─────────────────────╮
+ │ undo copy pste save fulSrc    │ │ srcnSel Ctl Cmd Opt Sft │ 
+ │ ←    ↑    ↓    →    files     | | closWin Ctl Cmd Opt Sft │ 
+ │ Hme  PgD  PgU  End  swtchapp  │ │ Rwd     Pse vDn vUp Mut │ 
  ╰─────────╮ ESC  TAB  │ │         ╭───────────╯
            ╰───────────╯ ╰─────────╯
 ```
