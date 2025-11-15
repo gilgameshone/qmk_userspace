@@ -54,6 +54,37 @@ enum crkbd_layers {
 #define COPY G(KC_C)
 #define CUT G(KC_X)
 #define PASTEW S(LAG(KC_V))
+#define undo  G(KC_Z) 
+#define redo  S(G(KC_Z)) 
+
+#define selall  G(KC_A) //“d” and “n” and shift
+#define find  G(KC_F) 
+#define findnext G(KC_G)
+#define findprev  S(G(KC_G))
+
+#define closwin G(KC_W)
+#define quitapp          G(KC_Q)
+
+#define switchapp A(KC_TAB) G(KC_TAB)
+
+#define printscr  S(G(KC_3))
+#define printsel  S(G(KC_4))
+
+#define hiragana KC_F6 C(KC_J)
+#define katakana KC_F7 C(KC_K)
+
+#define save G(KC_S)
+#define lock C(G(KC_Q))
+
+#define files  S(G(KC_H))
+#define launcher G(KC_SPC)
+
+#define winmin G(KC_DOWN) 
+#define winmax G(KC_UP) 
+#define winleft G(KC_LEFT)
+#define winright G(KC_RIGHT)
+#define winmonitornext S(G(KC_RIGHT))
+#define winmonitorprev S(G(KC_LEFT)) 
 
 #define TRON_NUM LT(_TRON_NUM,KC_BSPC)
 #define TRON_NAV MO(_NAV)
