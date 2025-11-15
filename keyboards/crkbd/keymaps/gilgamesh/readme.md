@@ -14,9 +14,9 @@ The base layer uses a modified Magic Sturdy for the alpha arrangement. The shift
  │  X   M   L   C   P  │ │  B   ★   U   O   Q  │ 
  │  S   T   R   D   Y  | |  F   N   E   A   I  │ 
  │  V   K   J   G   W  │ │  Z   H  ',  ".  ?-  │ 
- ╰─────────╮  ⌫ ␣ │ │ ®  ⇧ ╭─────────╯
+ ╰─────────╮    ⌫   ␣  │ │  ®   ⇧    ╭─────────╯
            ╰───────────╯ ╰───────────╯
-                   ╰─CapsWord─╯
+                   ╰CapsWord╯
 ```
 
 ## Magic keys "★"
@@ -51,28 +51,28 @@ The second magic key `☆` (Sorcery) can be accessed by pressing `★` and `C` a
 This layer has some realestate available. `aPst` here pastes without formatting. `Ynk` pulls from Alfred's kill list / clipboard. `Cpy` and `Pst` are duplicated here for use with one hand mouse use. 
 
 ```
- ╭─────────────────────────╮ ╭─────────────────────╮
- │ lock fndPr find  fndNx  │ │  °   #   <   >   ^  │ 
- │ rstZ ZoomI ZoomO DEL ynk| |  ~   %   {   }   `  │ 
- │ Caps def   gTr   Ggl    │ │  §   ¥   $   £   €  │ 
- ╰───────────╮             │ │         ╭───────────╯
-             ╰─────────────╯ ╰─────────╯
+ ╭──────────────────────────────╮ ╭─────────────────────╮
+ │ undo copy  pste  save fulSrc │ │  °   #   <   >   ^  │ 
+ │ rstZ ZoomI ZoomO DEL  ynk    | |  ~   %   {   }   `  │ 
+ │ Caps def   gTr   Ggl         │ │  §   ¥   $   £   €  │ 
+ ╰───────────────╮              │ │         ╭───────────╯
+                 ╰─────────────╯ ╰─────────╯
 ```
 
 ### Nav (hold REP)
 
 Nav has some available realestate, but the hold key to access it gets used heavily. `Rwd` uses Alfred to rewind the media player slightly. 
 ```
- ╭──────────────────────╮ ╭─────────────────────╮
- │ undo copy pste save fulSrc    │ │ srcnSel Ctl Cmd Opt Sft │ 
- │ ←    ↑    ↓    →    files     | | closWin Ctl Cmd Opt Sft │ 
- │ Hme  PgD  PgU  End  swtchapp  │ │ Rwd     Pse vDn vUp Mut │ 
- ╰─────────╮ ESC  TAB  │ │         ╭───────────╯
-           ╰───────────╯ ╰─────────╯
+ ╭────────────────────────────────╮ ╭─────────────────────────╮
+ │ lock fndPr find fndNx          │ │ srcnSel Ctl Cmd Opt Sft │ 
+ │ ←    ↑     ↓     →    files    | | closWin Ctl Cmd Opt Sft │ 
+ │ Hme  PgD   PgU   End  swtchapp │ │ Rwd     Pse vDn vUp Mut │ 
+ ╰───────────────────╮  ESC  TAB  │ │         ╭───────────────╯
+                     ╰────────────╯ ╰─────────╯
 ```
 ### Combos
 
-Combo use has proliferated to reduce thumb-holding strain. Probably best view visually. 
+Combo use has proliferated to reduce thumb-holding strain. Probably best view visually. Currently, I am experimenting with 'vertical' combos, one's that should have less of an impact when using rolling motions when typing. 
 
 xs = esc ⎋
 mt = copy ⌘C
@@ -88,7 +88,7 @@ yw = home ⇱
 cp = undo ⌘Z
 gw = left ←
 
-bf =  katakana カタカナ
+bf = katakana カタカナ
 ★n = kana かな
 fn = backspace word ⌥ ⌫
 fz = end ⇲
@@ -99,15 +99,15 @@ a. = return ⏎
 i- = select all ⌘A
 oa = save ⌘S
 
-␣ ® = capsword
-⌫ ⇧ = numword
+␣® = capsword
+⌫⇧ = numword
 
 ★c = sorcery 
 dn = select word
 
 qi- = ble layer
-⌫ ␣ = fn layer 
-® ⇧ = meh layer
+⌫␣ = fn layer 
+®⇧ = meh layer
 
 
 
