@@ -68,7 +68,7 @@ This layer has some realestate available. `aPst` here pastes without formatting.
 Nav has some available realestate, but the hold key to access it gets used heavily. `Rwd` uses Alfred to rewind the media player slightly. 
 ```
  ╭────────────────────────────────╮ ╭─────────────────────────╮
- │ undo copy  pste  save fulSrc   │ │ srcnSel Ctl Cmd Opt Sft │ 
+ │ undo copy  pste  save          │ │ srcnSel Ctl Cmd Opt Sft │ 
  │ ←    ↑     ↓     →    files    | | closWin Ctl Cmd Opt Sft │ 
  │ Hme  PgD   PgU   End  swtchapp │ │ Rwd     Pse vDn vUp Mut │ 
  ╰───────────────────╮  ESC  TAB  │ │         ╭───────────────╯
