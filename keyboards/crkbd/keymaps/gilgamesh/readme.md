@@ -6,7 +6,7 @@ A 34-key keyboard layout on QMK firmware that uses layers, tap-hold keys, and ma
 
 ## Magic Sturdy mod
 
-The base layer uses a modified Magic Sturdy for the alpha arrangement. The shifted characters are accessed by `SHFT` on tap, a shift function that lasts for only one character. `Caps Word` can be accessed by tapping `SPC` and `REP` simultaneously. The repeat key, `REP`, helps to reduce single finger bigrams and improve typing comfort. 
+The base layer uses a modified Magic Sturdy for the alpha arrangement. The shifted characters are accessed by `⇧` on tap, a shift function that lasts for only one character. `Caps Word` can be accessed by tapping `␣` and `®` simultaneously. The repeat key, `®`, helps to reduce single finger bigrams and improve typing comfort. 
 
 ```
                 ╭───────☆───────╮
@@ -14,10 +14,14 @@ The base layer uses a modified Magic Sturdy for the alpha arrangement. The shift
  │  X   M   L   C   P  │ │  B   ★   U   O   Q  │ 
  │  S   T   R   D   Y  | |  F   N   E   A   I  │ 
  │  V   K   J   G   W  │ │  Z   H  ',  ".  ?-  │ 
- ╰─────────╮    ⌫   ␣  │ │  ®   ⇧    ╭─────────╯
-           ╰───────────╯ ╰───────────╯
+ ╰───────────╮  ⌫   ␣  │ │  ®   ⇧  ╭───────────╯
+             ╰─────────╯ ╰─────────╯
                    ╰CapsWord╯
 ```
+® repeat
+⇧ one shot shift
+␣ space
+⌫ backspace
 
 ## Magic keys "★"
 The magic key outputs the following when the previous key is pressed. It also reduces single finger bigrams and improves typing comfort.
@@ -51,11 +55,11 @@ The second magic key `☆` (Sorcery) can be accessed by pressing `★` and `C` a
 This layer has some realestate available. `aPst` here pastes without formatting. `Ynk` pulls from Alfred's kill list / clipboard. `Cpy` and `Pst` are duplicated here for use with one hand mouse use. 
 
 ```
- ╭──────────────────────────────╮ ╭─────────────────────╮
- │ undo copy  pste  save fulSrc │ │  °   #   <   >   ^  │ 
- │ rstZ ZoomI ZoomO DEL  ynk    | |  ~   %   {   }   `  │ 
- │ Caps def   gTr   Ggl         │ │  §   ¥   $   £   €  │ 
- ╰───────────────╮              │ │         ╭───────────╯
+ ╭─────────────────────────────╮ ╭─────────────────────╮
+ │ lock fndPr find fndNx       │ │  °   #   <   >   ^  │ 
+ │ rstZ ZoomI ZoomO DEL  ynk   | |  ~   %   {   }   `  │ 
+ │ Caps def   gTr   Ggl        │ │  §   ¥   $   £   €  │ 
+ ╰───────────────╮             │ │         ╭───────────╯
                  ╰─────────────╯ ╰─────────╯
 ```
 
@@ -64,7 +68,7 @@ This layer has some realestate available. `aPst` here pastes without formatting.
 Nav has some available realestate, but the hold key to access it gets used heavily. `Rwd` uses Alfred to rewind the media player slightly. 
 ```
  ╭────────────────────────────────╮ ╭─────────────────────────╮
- │ lock fndPr find fndNx          │ │ srcnSel Ctl Cmd Opt Sft │ 
+ │ undo copy  pste  save fulSrc   │ │ srcnSel Ctl Cmd Opt Sft │ 
  │ ←    ↑     ↓     →    files    | | closWin Ctl Cmd Opt Sft │ 
  │ Hme  PgD   PgU   End  swtchapp │ │ Rwd     Pse vDn vUp Mut │ 
  ╰───────────────────╮  ESC  TAB  │ │         ╭───────────────╯
@@ -73,6 +77,7 @@ Nav has some available realestate, but the hold key to access it gets used heavi
 ### Combos
 
 Combo use has proliferated to reduce thumb-holding strain. Probably best view visually. Currently, I am experimenting with 'vertical' combos, one's that should have less of an impact when using rolling motions when typing. 
+
 
 xs = esc ⎋
 mt = copy ⌘C
@@ -96,8 +101,8 @@ zh = right →
 nh = down ↓
 e, = forward word ⌥ →
 a. = return ⏎
-i- = select all ⌘A
-oa = save ⌘S
+i- = select all ⌘a
+oa = save ⌘s
 
 ␣® = capsword
 ⌫⇧ = numword
@@ -146,13 +151,40 @@ qi- = ble layer
 ### Purple ⇅
 
 ```
- ╭────────────────╮  ╭───────────────╮
- │　ぴ　　　　　ぱ　ぽ │  │  　　　　 　　　 │ 
- │　　　　　　　　　ぷ |  |　             │ 
- │　　　　　　　　　ぺ │  │　　　          │ 
- ╰─────────╮　⌫　⇅ │  │　⇅　   ╭───────╯
-           ╰──────╯  ╰───────╯
+ ╭────────────────╮  ╭─────────────────────╮
+ │　ぴ　　　　　ぱ　ぽ │  │  　　　     　 　　　 │ 
+ │　zen　  　　　　ぷ |  |　                   │ 
+ │　　　　　　　　　ぺ │  │　　　                │ 
+ ╰─────────╮　変換　⇅ │  │　⇅　無変換   ╭───────╯
+           ╰─────────╯  ╰────────────╯
 ```
+
+### Fun (hold ,)
+
+
+```
+ ╭─────────────────────────────╮ ╭─────────────────────╮
+ │                         NUM │ │ PSCR F9 F10 F11 F12 │ 
+ │                         INS | | SCRL F5 F6  F7  F8  │ 
+ │           MagicSturdy   APP │ │ PAUS F1 F2  F3  F4  │ 
+ ╰────────────────╮            │ │  NUM INS APP  ╭─────╯
+                  ╰────────────╯ ╰───────────────╯
+```
+
+
+### Meh (hold j)
+
+
+```
+ ╭───────────────╮ ╭──────────────────────╮
+ │ X M MCTL C P  │ │ EJCT F21 F22 F23 F24 │ 
+ │ S Z B    D F  | | CPNL F17 F18 F19 F20 │ 
+ │ V K J    G W  │ │ LPAD F13 F14 F15 F16 │ 
+ ╰────╮  L  SPC  │ │         ╭────────────╯
+      ╰──────────╯ ╰─────────╯
+```
+
+
 #### key position reference 
 ```
  ╭─────────────────────╮ ╭─────────────────────╮
