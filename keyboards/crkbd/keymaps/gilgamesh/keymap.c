@@ -1126,8 +1126,6 @@ const uint16_t PROGMEM combo_qkreboot[] = {KC_P, KC_Y, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_qkeeprom[] = {KC_C, HSCTL_D, KC_G, COMBO_END};
 
 // layers
-const uint16_t PROGMEM combo_fun[] = {SYM, NUM, COMBO_END};
-const uint16_t PROGMEM combo_win[] = {QK_REP, OSS, COMBO_END};
 const uint16_t PROGMEM combo_numword[] = {NUM, OSS, COMBO_END};
 const uint16_t PROGMEM combo_os_num[] = {HSCMD_R, NUM, COMBO_END};
 const uint16_t PROGMEM combo_os_nav[] = {HSOPT_T, NUM, COMBO_END};
@@ -1222,8 +1220,6 @@ combo_t key_combos[] = {
   COMBO(combo_qkeeprom, EE_CLR),
   COMBO(combo_qkreboot, QK_RBT),
   // layers
-  COMBO(combo_fun, MO(_FUN)),
-  COMBO(combo_win, MO(_WIN)),
   COMBO(combo_numword, TO(_NUM_W)),
   COMBO(combo_os_num, OSL(_NUM)),
   COMBO(combo_os_nav, OSL(_NAV)),
@@ -1323,27 +1319,23 @@ bool caps_word_press_user(uint16_t keycode) {
 // key overides
 // SHIFT + ' = "
 const key_override_t comm_quo_override = ko_make_basic(MOD_MASK_SHIFT, HS_COMM, JP_QUOT);
-const key_override_t comm_quo_override2 = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, JP_QUOT);
 const key_override_t dot_dquo_override = ko_make_basic(MOD_MASK_SHIFT, JP_DOT, JP_DQUO);
 const key_override_t min_ques_override = ko_make_basic(MOD_MASK_SHIFT, JP_MINS, JP_QUES);
-const key_override_t capsw_capsl_override = ko_make_basic(MOD_MASK_SHIFT, CW_TOGG, KC_CAPS);
-const key_override_t paste_pastewithout_override = ko_make_basic(MOD_MASK_ALT, PASTE, S(LAG(KC_V)));
-const key_override_t paste_yank_override = ko_make_basic(MOD_MASK_GUI, PASTE, S(LCAG(KC_Y))); //not working
-const key_override_t undo_redo_override = ko_make_basic(MOD_MASK_CTRL, UNDO, S(G(KC_Z)));
-const key_override_t copy_cut_override = ko_make_basic(MOD_MASK_CTRL, COPY, G(KC_X));
-
+const key_override_t paste_pastewithout_override = ko_make_basic(MOD_MASK_SHIFT, PASTE, PASTEW);
+const key_override_t undo_redo_override = ko_make_basic(MOD_MASK_SHIFT, UNDO, REDO);
+const key_override_t copy_cut_override = ko_make_basic(MOD_MASK_SHIFT, COPY, CUT);
+const key_override_t printscr_override = ko_make_basic(MOD_MASK_SHIFT, PRINTSEL, PRINTSCR);
 
 
 
 const key_override_t *key_overrides[] = {
     &comm_quo_override,
-    &comm_quo_override2,
     &dot_dquo_override,
     &min_ques_override,
-    &capsw_capsl_override,
     &paste_pastewithout_override,
     &undo_redo_override,
     &copy_cut_override,
+    &printscr_override,
 };
 
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
@@ -1389,9 +1381,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     ),
   [_TRON_PURPLE] = LAYOUT_split_3x5_3(
         TJ_PI, _______, _______,   TJ_PA,   TJ_PO,            _______, _______, _______, _______, _______,
-      _______, _______, _______, _______,   TJ_PU,            _______, _______, _______, _______, _______,
+      KC_LNG5, _______, _______, _______,   TJ_PU,            _______, HIRAGANA, KATAKANA, _______, _______,
       _______, _______, _______, _______,   TJ_PE,            _______, _______, _______, _______, _______,
-                        _______, _______, _______,            _______, _______, _______
+                        _______, KC_INT4, _______,            _______, KC_INT5, _______
                                     ),
   [_TRON_NUM] = LAYOUT_split_3x5_3(
      TJS_EXL, TJS_LBKT, TJS_RBKT,  TJS_COLN,  C(KC_F2) ,        TJS_PLUS, TJS_N7, TJS_N8, TJS_N9, TJS_ASTRK,
@@ -1442,8 +1434,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______,     _______, _______, _______
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
-      MEH(KC_X), MEH(KC_M), MEH(KC_L),  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
-      MEH(KC_S), MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  MEH(KC_F),           KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
+      MEH(KC_X), MEH(KC_M), KC_MCTL,  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
+      WINLEFT, MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  WINRIGHT,           KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
       MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
                                MEH(KC_Z),   KC_MCTL,  MEH(KC_SPC),         XXXXXXX, XXXXXXX, _______
                               )
