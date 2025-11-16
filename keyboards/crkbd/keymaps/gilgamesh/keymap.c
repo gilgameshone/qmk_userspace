@@ -54,37 +54,41 @@ enum crkbd_layers {
 #define COPY G(KC_C)
 #define CUT G(KC_X)
 #define PASTEW S(LAG(KC_V))
-#define undo  G(KC_Z) 
-#define redo  S(G(KC_Z)) 
+#define UNDO  G(KC_Z) 
+#define REDO  S(G(KC_Z)) 
 
-#define selall  G(KC_A) //“d” and “n” and shift
-#define find  G(KC_F) 
-#define findnext G(KC_G)
-#define findprev  S(G(KC_G))
+#define SELALL  G(KC_A) //“d” and “n” and shift
+#define FIND  G(KC_F) 
+#define FINDNEXT G(KC_G)
+#define FINDPREV  S(G(KC_G))
 
-#define closwin G(KC_W)
-#define quitapp          G(KC_Q)
+#define CLOSWIN G(KC_W)
+#define QUITAPP          G(KC_Q)
 
-#define switchapp A(KC_TAB) G(KC_TAB)
+#define SWITCHAPP  G(KC_TAB)
 
-#define printscr  S(G(KC_3))
-#define printsel  S(G(KC_4))
+#define PRINTSCR  S(G(KC_3))
+#define PRINTSEL  S(G(KC_4))
 
-#define hiragana KC_F6 C(KC_J)
-#define katakana KC_F7 C(KC_K)
+#define HIRAGANA  C(KC_J)
+#define KATAKANA  C(KC_K)
 
-#define save G(KC_S)
-#define lock C(G(KC_Q))
+#define SAVE G(KC_S)
+#define LOCK C(G(KC_Q))
 
-#define files  S(G(KC_H))
-#define launcher G(KC_SPC)
+#define FILES  S(G(KC_H))
+#define LAUNCHER G(KC_SPC)
 
-#define winmin G(KC_DOWN) 
-#define winmax G(KC_UP) 
-#define winleft G(KC_LEFT)
-#define winright G(KC_RIGHT)
-#define winmonitornext S(G(KC_RIGHT))
-#define winmonitorprev S(G(KC_LEFT)) 
+#define FIND G(KC_F) 
+#define FINDPR S(G(KC_G))
+#define FINDNX G(KC_G)
+
+#define WINMIN G(KC_H)
+#define WINMAX MEH(KC_SPC)
+#define WINLEFT G(KC_LEFT)
+#define WINRIGHT G(KC_RIGHT)
+#define WINMONITORNEXT S(G(KC_RIGHT))
+#define WINMONITORPREV S(G(KC_LEFT)) 
 
 #define TRON_NUM LT(_TRON_NUM,KC_BSPC)
 #define TRON_NAV MO(_NAV)
@@ -1420,7 +1424,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     ),
   [_TRON_PURPLE] = LAYOUT_split_3x5_3(
         TJ_PI, _______, _______,   TJ_PA,   TJ_PO,            _______, _______, _______, _______, _______,
-      _______, _______, _______, _______,   TJ_PU,            _______, _______, _______, _______, _______,
+      _______, _______, _______, _______,   TJ_PU,            _______, HIRAGANA, KATAKANA, _______, _______,
       _______, _______, _______, _______,   TJ_PE,            _______, _______, _______, _______, _______,
                         _______, _______, _______,            _______, _______, _______
                                     ),
@@ -1443,13 +1447,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         _______,     NUM,  _______,           _______,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      KC_X, KC_C, KC_V, XXXXXXX,    KC_Z,    LSG(KC_5), OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, C(KC_F4),      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
-      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   XXXXXXX,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
+      UNDO, COPY, PASTE, SAVE,    KC_Z,    PRINTSEL, OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, FILES,      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
+      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   SWITCHAPP,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
                         _______, KC_ESC,    KC_TAB,      _______, _______, _______
                               ),
   [_SYM] = LAYOUT_split_3x5_3(
-       _______,   _______, G(KC_C),    PASTE,        KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
+       LOCK,  FINDPR, FIND,    FINDNX,        KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
        _______, A(KC_DEL), KC_PENT,   KC_DEL,    HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
        JP_CAPS,     DFINE,   GTRNS,    GOOGL,       KC_LPAD,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
                                 XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  _______, _______
@@ -1476,7 +1480,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       MEH(KC_X), MEH(KC_M), KC_MCTL,  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
       MEH(KC_S), MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  MEH(KC_F),           KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
       MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
-                               MEH(KC_Z),   MEH(L),  MEH(KC_SPC),         XXXXXXX, XXXXXXX, _______
+                               MEH(KC_Z),   WINMIN,  WINMAX,         XXXXXXX, XXXXXXX, _______
                               )
 };
 
