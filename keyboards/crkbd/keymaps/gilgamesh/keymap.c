@@ -53,7 +53,38 @@ enum crkbd_layers {
 #define UNDO C(KC_Z)
 #define COPY C(KC_C)
 #define CUT C(KC_X)
-#define PASTEW S(LC(KC_V))
+#define PASTEW C(S(KC_V))
+#define REDO S(C(KC_Z))
+
+#define FIND C(KC_F) 
+#define FINDNEXT KC_F3 
+#define FINDPREV S(KC_F3)
+
+#define CLOSWIN A(KC_F4)
+     
+#define SWITCHAPP A(KC_TAB) 
+
+#define PRINTSCR KC_PSRC 
+#define PRINTSEL S(G(KC_S) 
+
+#define HIRAGANA KC_F6 
+#define KATAKANA KC_F7 
+
+#define SAVE C(KC_S) 
+#define FULLSCREEN KC_F11 
+#define LOCK G(KC_L) 
+
+#define FILES G(KC_E) 
+
+#define FORWWORD C(KC_RIGHT)
+#define BACKWORD C(KC_LEFT
+  
+#define WINMIN G(KC_DOWN) 
+#define WINMAX G(KC_UP) 
+#define WINLEFT G(KC_LEFT)
+#define WINRIGHT G(KC_RIGHT)
+
+
 
 #define TRON_NUM LT(_TRON_NUM,KC_BSPC)
 #define TRON_NAV MO(_NAV)
@@ -1235,8 +1266,8 @@ combo_t key_combos[] = {
   // movement
   COMBO(combo_back_char, KC_LEFT),
   COMBO(combo_for_char, KC_RGHT),
-  COMBO(combo_back_word, C(KC_LEFT)),
-  COMBO(combo_for_word, C(KC_RGHT)),
+  COMBO(combo_back_word, BACKWORD,
+  COMBO(combo_for_word, FORWWORD,
   COMBO(combo_back_sent, KC_HOME),
   COMBO(combo_for_sent, KC_END),
   COMBO(combo_scroll_up, MS_WHLU),
@@ -1249,8 +1280,8 @@ combo_t key_combos[] = {
   // j movement
   COMBO(combo_jback_char, KC_LEFT),
   COMBO(combo_jfor_char, KC_RGHT),
-  COMBO(combo_jback_word, C(KC_LEFT)),
-  COMBO(combo_jfor_word, C(KC_RGHT)),
+  COMBO(combo_jback_word, BACKWORD,
+  COMBO(combo_jfor_word, FORWWORD),
   COMBO(combo_jback_sent, KC_HOME),
   COMBO(combo_jfor_sent, KC_END),
   COMBO(combo_jscroll_up, MS_WHLU),
@@ -1283,12 +1314,12 @@ combo_t key_combos[] = {
   COMBO(combo_undo, UNDO),
   COMBO(combo_copy, COPY),
   COMBO(combo_paste, PASTE),
-  COMBO(combo_save, C(KC_S)),
+  COMBO(combo_save, SAVE),
   // j copy paste & shortcuts
   COMBO(combo_jundo, UNDO),
   COMBO(combo_jcopy, COPY),
   COMBO(combo_jpaste, PASTE),
-  COMBO(combo_jsave, C(KC_S)),
+  COMBO(combo_jsave, SAVE),
   // misc
   COMBO(combo_selword, SELWORD),
   COMBO(combo_select_all, G(KC_A)),
@@ -1325,6 +1356,8 @@ const key_override_t paste_pastewithout_override = ko_make_basic(MOD_MASK_SHIFT,
 const key_override_t undo_redo_override = ko_make_basic(MOD_MASK_SHIFT, UNDO, REDO);
 const key_override_t copy_cut_override = ko_make_basic(MOD_MASK_SHIFT, COPY, CUT);
 const key_override_t printscr_override = ko_make_basic(MOD_MASK_SHIFT, PRINTSEL, PRINTSCR);
+const key_override_t forwWord_override = ko_make_basic(MOD_MASK_ALT, KC_RIGHT, FORWWORD);
+const key_override_t backWord_override = ko_make_basic(MOD_MASK_ALT, KC_LEFT, BACKWORD);
 
 
 
@@ -1336,6 +1369,8 @@ const key_override_t *key_overrides[] = {
     &undo_redo_override,
     &copy_cut_override,
     &printscr_override,
+    &forwWord_override,
+    &backWord_override,
 };
 
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
@@ -1404,13 +1439,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         _______,     NUM,  _______,           _______,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      KC_X, KC_C, KC_V, XXXXXXX,    KC_Z,    LSG(KC_5), OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, C(KC_F4),      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
-      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   XXXXXXX,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
+      UNDO, COPY, PASTE, SAVE,    KC_Z,    PRINTSEL, OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, FILES,      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
+      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   SWITCHAPP,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
                         _______, KC_ESC,    KC_TAB,      _______, _______, _______
                               ),
   [_SYM] = LAYOUT_split_3x5_3(
-       _______,   _______, G(KC_C),    PASTE,        KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
+       LOCK,  FINDPR, FIND,    FINDNX,       KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
        _______, A(KC_DEL), KC_PENT,   KC_DEL,    HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
        JP_CAPS,     DFINE,   GTRNS,    GOOGL,       KC_LPAD,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
                                 XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  _______, _______
@@ -1418,7 +1453,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FUN] = LAYOUT_split_3x5_3(
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           KC_NUM,      KC_PSCR,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           KC_INS,      KC_SCRL,   KC_F5,   KC_F6,   KC_F7,   KC_F8,
-      XXXXXXX, XXXXXXX, XXXXXXX, DF(_MAGICSTURDY), XXXXXXX,      KC_PAUS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,
+      XXXXXXX, XXXXXXX, XXXXXXX, DF(_MAGICSTURDY), KC_APP,      KC_PAUS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,
                                  _______, XXXXXXX, XXXXXXX,       KC_NUM,  KC_INS,  KC_APP
                               ),
   [_NUM_W] = LAYOUT_split_3x5_3(
@@ -1437,7 +1472,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       MEH(KC_X), MEH(KC_M), KC_MCTL,  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
       WINLEFT, MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  WINRIGHT,           KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
       MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
-                               MEH(KC_Z),   KC_MCTL,  MEH(KC_SPC),         XXXXXXX, XXXXXXX, _______
+                               MEH(KC_Z),   WINMIN,  WINMAX,         XXXXXXX, XXXXXXX, _______
                               )
 };
 
