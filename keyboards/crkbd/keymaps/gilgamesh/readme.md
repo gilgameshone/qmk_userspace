@@ -18,11 +18,12 @@ The base layer uses a modified Magic Sturdy for the alpha arrangement. The shift
              ╰─────────╯ ╰─────────╯
                    ╰CapsWord╯
 ```
+```
 ® repeat
 ⇧ one shot shift
 ␣ space
 ⌫ backspace
-
+```
 ## Magic keys "★"
 The magic key outputs the following when the previous key is pressed. It also reduces single finger bigrams and improves typing comfort.
 
@@ -78,7 +79,7 @@ Nav has some available realestate, but the hold key to access it gets used heavi
 
 Combo use has proliferated to reduce thumb-holding strain. Probably best view visually. Currently, I am experimenting with 'vertical' combos, one's that should have less of an impact when using rolling motions when typing. 
 
-
+```
 xs = esc ⎋
 mt = copy ⌘C
 lr = paste ⌘V
@@ -113,7 +114,7 @@ dn = select word
 qi- = ble layer
 ⌫␣ = fn layer 
 ®⇧ = meh layer
-
+```
 
 
 
