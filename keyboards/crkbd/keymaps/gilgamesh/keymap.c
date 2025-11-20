@@ -65,7 +65,7 @@ enum crkbd_layers {
 #define SWITCHAPP A(KC_TAB) 
 
 #define PRINTSCR KC_PSRC 
-#define PRINTSEL S(G(KC_S) 
+#define PRINTSEL S(G(KC_S))
 
 #define HIRAGANA KC_F6 
 #define KATAKANA KC_F7 
@@ -77,7 +77,7 @@ enum crkbd_layers {
 #define FILES G(KC_E) 
 
 #define FORWWORD C(KC_RIGHT)
-#define BACKWORD C(KC_LEFT
+#define BACKWORD C(KC_LEFT)
   
 #define WINMIN G(KC_DOWN) 
 #define WINMAX G(KC_UP) 
@@ -1266,8 +1266,8 @@ combo_t key_combos[] = {
   // movement
   COMBO(combo_back_char, KC_LEFT),
   COMBO(combo_for_char, KC_RGHT),
-  COMBO(combo_back_word, BACKWORD,
-  COMBO(combo_for_word, FORWWORD,
+  COMBO(combo_back_word, BACKWORD),
+  COMBO(combo_for_word, FORWWORD),
   COMBO(combo_back_sent, KC_HOME),
   COMBO(combo_for_sent, KC_END),
   COMBO(combo_scroll_up, MS_WHLU),
@@ -1280,7 +1280,7 @@ combo_t key_combos[] = {
   // j movement
   COMBO(combo_jback_char, KC_LEFT),
   COMBO(combo_jfor_char, KC_RGHT),
-  COMBO(combo_jback_word, BACKWORD,
+  COMBO(combo_jback_word, BACKWORD),
   COMBO(combo_jfor_word, FORWWORD),
   COMBO(combo_jback_sent, KC_HOME),
   COMBO(combo_jfor_sent, KC_END),
@@ -1355,7 +1355,6 @@ const key_override_t min_ques_override = ko_make_basic(MOD_MASK_SHIFT, JP_MINS, 
 const key_override_t paste_pastewithout_override = ko_make_basic(MOD_MASK_SHIFT, PASTE, PASTEW);
 const key_override_t undo_redo_override = ko_make_basic(MOD_MASK_SHIFT, UNDO, REDO);
 const key_override_t copy_cut_override = ko_make_basic(MOD_MASK_SHIFT, COPY, CUT);
-const key_override_t printscr_override = ko_make_basic(MOD_MASK_SHIFT, PRINTSEL, PRINTSCR);
 const key_override_t forwWord_override = ko_make_basic(MOD_MASK_ALT, KC_RIGHT, FORWWORD);
 const key_override_t backWord_override = ko_make_basic(MOD_MASK_ALT, KC_LEFT, BACKWORD);
 
@@ -1368,7 +1367,6 @@ const key_override_t *key_overrides[] = {
     &paste_pastewithout_override,
     &undo_redo_override,
     &copy_cut_override,
-    &printscr_override,
     &forwWord_override,
     &backWord_override,
 };
@@ -1439,13 +1437,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         _______,     NUM,  _______,           _______,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      UNDO, COPY, PASTE, SAVE,    KC_Z,    PRINTSEL, OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, FILES,      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
-      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   SWITCHAPP,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
+      UNDO, COPY, PASTE, SAVE,    KC_Z,    _______, OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, _______,      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
+      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   _______,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
                         _______, KC_ESC,    KC_TAB,      _______, _______, _______
                               ),
   [_SYM] = LAYOUT_split_3x5_3(
-       LOCK,  FINDPR, FIND,    FINDNX,       KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
+       LOCK,  _______, _______,    _______,       KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
        _______, A(KC_DEL), KC_PENT,   KC_DEL,    HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
        JP_CAPS,     DFINE,   GTRNS,    GOOGL,       KC_LPAD,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
                                 XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  _______, _______
