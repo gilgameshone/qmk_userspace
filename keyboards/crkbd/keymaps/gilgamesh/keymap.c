@@ -56,32 +56,14 @@ enum crkbd_layers {
 #define UNDO  G(KC_Z) 
 #define REDO  S(G(KC_Z)) 
 
-
-#define FIND  G(KC_F) 
-#define FINDNEXT G(KC_G)
-#define FINDPREV  S(G(KC_G))
-
-#define CLOSWIN G(KC_W)
-#define QUITAPP G(KC_Q)
-
-#define SWITCHAPP  G(KC_TAB)
-
 #define PRINTSCR  S(G(KC_3))
 #define PRINTSEL  S(G(KC_4))
+#define PRINTALT  S(G(KC_5))
 
 #define HIRAGANA  C(KC_J)
 #define KATAKANA  C(KC_K)
 
 #define SAVE G(KC_S)
-#define LOCK C(G(KC_Q))
-
-#define FILES  S(G(KC_H))
-#define LAUNCHER G(KC_SPC)
-
-#define FIND G(KC_F) 
-#define FINDPR S(G(KC_G))
-#define FINDNX G(KC_G)
-#define FILES G(KC_H)
 
 #define WINMIN G(KC_H)
 #define WINMAX MEH(KC_SPC)
@@ -122,7 +104,7 @@ enum crkbd_layers {
 //
 //     A * -> AO     L * -> LR      
 //     C * -> CY     M * -> MT      T * -> TM
-//     D * -> DY     O * -> OA      U * -> UE
+//     D * -> DY     O * -OA      U * -> UE
 //     E * -> EU     P * -> PY      V * -> VS      
 //     G * -> GY     R * -> RL      X * -> XT
 //     Y * -> YP             
@@ -1173,10 +1155,8 @@ const uint16_t PROGMEM combo_nwret[] = {JP_DOT, HSOPT_A, COMBO_END};
 const uint16_t PROGMEM combo_panic[] = {KC_X, HSSFT_S, COMBO_END};
 
 // movement 
-const uint16_t PROGMEM combo_back_char[] = {HSHYP_G, KC_W, COMBO_END};
-const uint16_t PROGMEM combo_for_char[] = {HSHYP_H, KC_Z, COMBO_END};
-const uint16_t PROGMEM combo_back_word[] = {HSCMD_R, HS_J, COMBO_END};
-const uint16_t PROGMEM combo_for_word[] = {HS_COMM, HSCMD_E, COMBO_END};
+const uint16_t PROGMEM combo_back_char[] = {HSCMD_R, HS_J, COMBO_END};
+const uint16_t PROGMEM combo_for_char[] = {HS_COMM, HSCMD_E, COMBO_END};
 const uint16_t PROGMEM combo_back_sent[] = {KC_Y, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_for_sent[] = {KC_Z, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_scroll_down[] = {HSCTL_N, KC_Z, COMBO_END};
@@ -1187,10 +1167,8 @@ const uint16_t PROGMEM combo_down[] = {HSCTL_N, HSHYP_H, COMBO_END};
 const uint16_t PROGMEM combo_up[] = {HSCTL_D, HSHYP_G, COMBO_END};
 
 // j movement
-const uint16_t PROGMEM combo_jback_char[] = {TJ_SA, TJ_NA, COMBO_END};
-const uint16_t PROGMEM combo_jfor_char[] = {TJ_SU, TJ_TSU, COMBO_END};
-const uint16_t PROGMEM combo_jback_word[] = {TJ_KA, TJ_NI, COMBO_END};
-const uint16_t PROGMEM combo_jfor_word[] = {TJ_DOUTEN, TJ_U, COMBO_END};
+const uint16_t PROGMEM combo_jback_char[] = {TJ_KA, TJ_NI, COMBO_END};
+const uint16_t PROGMEM combo_jfor_char[] = {TJ_DOUTEN, TJ_U, COMBO_END};
 const uint16_t PROGMEM combo_jback_sent[] = {TJ_MO, TJ_NA, COMBO_END};
 const uint16_t PROGMEM combo_jfor_sent[] = {TJ_WO, TJ_SU, COMBO_END};
 const uint16_t PROGMEM combo_jscroll_down[] = {TJ_I, TJ_SU, COMBO_END};
@@ -1239,7 +1217,8 @@ const uint16_t PROGMEM combo_jsave[] = {TJ_A, TJ_SHI, COMBO_END};
 // misc
 const uint16_t PROGMEM combo_selword[] = {HSCTL_D, HSCTL_N, COMBO_END};
 const uint16_t PROGMEM combo_select_all[] = {HSSFT_I, JP_MINS, COMBO_END};
-
+const uint16_t PROGMEM combo_squot[] = {HSCMD_E, KC_U, COMBO_END};
+const uint16_t PROGMEM combo_dquot[] = {HSSFT_I, KC_Q, COMBO_END};
 
 
 
@@ -1268,8 +1247,7 @@ combo_t key_combos[] = {
   // movement
   COMBO(combo_back_char, KC_LEFT),
   COMBO(combo_for_char, KC_RGHT),
-  COMBO(combo_back_word, A(KC_LEFT)),
-  COMBO(combo_for_word, A(KC_RGHT)),
+
   COMBO(combo_back_sent, KC_HOME),
   COMBO(combo_for_sent, KC_END),
   COMBO(combo_scroll_up, MS_WHLU),
@@ -1282,8 +1260,7 @@ combo_t key_combos[] = {
   // j movement
   COMBO(combo_jback_char, KC_LEFT),
   COMBO(combo_jfor_char, KC_RGHT),
-  COMBO(combo_jback_word, A(KC_LEFT)),
-  COMBO(combo_jfor_word, A(KC_RGHT)),
+
   COMBO(combo_jback_sent, KC_HOME),
   COMBO(combo_jfor_sent, KC_END),
   COMBO(combo_jscroll_up, MS_WHLU),
@@ -1294,7 +1271,7 @@ combo_t key_combos[] = {
   COMBO(combo_jdown, KC_DOWN),
   // control
   
-  
+  COMBO(combo_delw, A(KC_DEL)),
   COMBO(combo_tab, KC_TAB),
   COMBO(combo_esc, KC_ESC),
   COMBO(combo_bkspw, A(KC_BSPC)),
@@ -1325,6 +1302,8 @@ combo_t key_combos[] = {
   // misc
   COMBO(combo_selword, SELWORD),
   COMBO(combo_select_all, G(KC_A)),
+  COMBO(combo_squot, S(KC_7)),
+  COMBO(combo_dquot, S(KC_2)),
 };
 
 // caps word
@@ -1358,7 +1337,7 @@ const key_override_t paste_pastewithout_override = ko_make_basic(MOD_MASK_SHIFT,
 const key_override_t undo_redo_override = ko_make_basic(MOD_MASK_SHIFT, UNDO, REDO);
 const key_override_t copy_cut_override = ko_make_basic(MOD_MASK_SHIFT, COPY, CUT);
 const key_override_t printscr_override = ko_make_basic(MOD_MASK_SHIFT, PRINTSEL, PRINTSCR);
-
+const key_override_t printalt_override = ko_make_basic(MOD_MASK_ALT, PRINTSEL, PRINTALT);
 
 
 const key_override_t *key_overrides[] = {
@@ -1369,6 +1348,7 @@ const key_override_t *key_overrides[] = {
     &undo_redo_override,
     &copy_cut_override,
     &printscr_override,
+    &printalt_override,
 };
 
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
@@ -1416,10 +1396,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TJ_PI, _______, _______,   TJ_PA,   TJ_PO,            _______, _______, _______, _______, _______,
       KC_LNG5, _______, _______, _______,   TJ_PU,            _______, HIRAGANA, KATAKANA, _______, _______,
       _______, _______, _______, _______,   TJ_PE,            _______, _______, _______, _______, _______,
-                        _______, KC_INT4, _______,            _______, KC_INT5, _______
+                        _______, KC_INT5, _______,            _______, KC_INT4, _______
                                     ),
   [_TRON_NUM] = LAYOUT_split_3x5_3(
-     TJS_EXL, TJS_LBKT, TJS_RBKT,  TJS_COLN,  C(KC_F2) ,        TJS_PLUS, TJS_N7, TJS_N8, TJS_N9, TJS_ASTRK,
+     TJS_EXL, TJS_LBKT, TJS_RBKT,  TJS_COLN,  KC_INT1,        TJS_PLUS, TJS_N7, TJS_N8, TJS_N9, TJS_ASTRK,
      TJS_AMPS, TJS_LPAR, TJS_RPAR, TJS_SEMI,   TJS_AT,          TJS_MINUS, TJS_N4, TJS_N5, TJS_N6, TJS_SLASH,
      TJS_QMARK, TJS_UNDER, TJS_DQT, TJS_SQT,   TJS_PIPE,        TJS_EQL, TJS_N1, TJS_N2, TJS_N3, TJS_DOT,
      _______, _______, MO(_TRON_SYM),                           KC_ENT, TJS_N0, _______
@@ -1431,19 +1411,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         _______, _______, _______,            _______, _______, _______
                                     ),
   [_NUM] = LAYOUT_split_3x5_3(
-      JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, C(KC_F2),           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
+      JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, KC_INT1,           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
       JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, JP_HASH,            JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
       TJS_QMARK, JP_UNDS, JP_PERC, JP_AT, JP_PIPE,            JP_EQL,   KC_1, KC_2, KC_3,  KC_DOT,
                         _______,     NUM,  _______,           _______,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      UNDO, COPY, PASTE, SAVE,    KC_Z,    PRINTSEL, OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, FILES,      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
-      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   SWITCHAPP,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
-                        _______, KC_ESC,    KC_TAB,      _______, _______, _______
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,    PRINTSEL, OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, XXXXXXX,      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
+      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   XXXXXXX,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
+      _______, KC_ESC,    KC_TAB,      _______, _______, _______
                               ),
   [_SYM] = LAYOUT_split_3x5_3(
-       LOCK,  FINDPR, FIND,    FINDNX,        KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
+       XXXXXXX,  XXXXXXX, XXXXXXX,    XXXXXXX,        KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
        _______, A(KC_DEL), KC_PENT,   KC_DEL,    HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
        JP_CAPS,     DFINE,   GTRNS,    GOOGL,       KC_LPAD,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
                                 XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  _______, _______
@@ -1452,10 +1432,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           KC_NUM,      KC_PSCR,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           KC_INS,      KC_SCRL,   KC_F5,   KC_F6,   KC_F7,   KC_F8,
       XXXXXXX, XXXXXXX, XXXXXXX, DF(_MAGICSTURDY), KC_APP,      KC_PAUS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,
-                                 _______, XXXXXXX, XXXXXXX,       KC_NUM,  KC_INS,  KC_APP
+                                 _______, XXXXXXX, XXXXXXX,       KC_NUM,  KC_INS,  _______
                               ),
   [_NUM_W] = LAYOUT_split_3x5_3(
-      JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, C(KC_F2),           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
+      JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, KC_INT1,           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
       JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, TJS_HASH,           JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
       JP_QUES, JP_UNDS, JP_PERC, JP_AT,    JP_PIPE,            JP_EQL,  KC_1, KC_2, KC_3,  KC_DOT,
                         _______, _______,  _NW_SPC,           _______,  KC_0, _______
@@ -1468,7 +1448,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
       MEH(KC_X), MEH(KC_M), KC_MCTL,  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
-      WINLEFT, MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  WINRIGHT,           KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
+      WINLEFT, MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  C(KC_F2),           KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
       MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
                                MEH(KC_Z),   WINMIN,  WINMAX,         XXXXXXX, XXXXXXX, _______
                               )
@@ -1528,13 +1508,13 @@ tap_dance_action_t tap_dance_actions[] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case NUM:
-            return 250;
+            return 300;
         case SYM:
-            return 250;
+            return 300;
         case OSS_NAV:
-            return 250;
+            return 300;
         case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
-            return 250;       
+            return 300;       
         default:
             return TAPPING_TERM;
     }
