@@ -45,7 +45,8 @@ enum crkbd_layers {
 
 #define NUM LT(_NUM,KC_BSPC)
 #define SYM LT(_SYM,KC_SPC)
-#define OSS TD(OSS_NAV)
+#define OSS TD(OSS_NAV) // not used in this branch
+#define SS OSM(MOD_LSFT)
 
 #define FUN MO(_FUN)
 
@@ -1152,7 +1153,7 @@ const uint16_t PROGMEM combo_capsword[] = {SYM, QK_REP, COMBO_END};
 
 // numword
 const uint16_t PROGMEM combo_nwret[] = {KC_6, KC_3, COMBO_END};
-const uint16_t PROGMEM combo_panic[] = {KC_AMP, KC_EXC, COMBO_END};
+const uint16_t PROGMEM combo_panic[] = {JP_AMPR, JP_EXLM, COMBO_END};
 
 // movement 
 const uint16_t PROGMEM combo_back_char[] = {HSCMD_R, HS_J, COMBO_END};
@@ -1366,7 +1367,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_X,     KC_M,    KC_L,    KC_C, KC_P,              KC_B,  QK_AREP,    KC_U,    KC_O,    KC_Q,
         HSSFT_S,  HSOPT_T, HSCMD_R, HSCTL_D, KC_Y,              KC_F,  HSCTL_N, HSCMD_E, HSOPT_A, HSSFT_I,
            KC_V,     KC_K,  HS_J,   HSHYP_G, KC_W,              KC_Z,  HSHYP_H, HS_COMM, JP_DOT,  JP_MINS,
-           _______,     NUM,  SYM,                              QK_REP,  OSS, _______
+           _______,     NUM,  SYM,                              QK_REP,  SS, _______
   ),
   [_QWERTY] = LAYOUT_split_3x5_3(
            KC_Q,     KC_W,    KC_E,    KC_R,  KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
