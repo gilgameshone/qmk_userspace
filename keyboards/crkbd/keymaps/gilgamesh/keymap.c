@@ -1152,7 +1152,7 @@ const uint16_t PROGMEM combo_capsword[] = {SYM, QK_REP, COMBO_END};
 
 // numword
 const uint16_t PROGMEM combo_nwret[] = {KC_6, KC_3, COMBO_END};
-const uint16_t PROGMEM combo_panic[] = {KC_AMP, KC_EXC, COMBO_END};
+const uint16_t PROGMEM combo_panic[] = {JP_AMPR, JP_EXLM, COMBO_END};
 
 // movement 
 const uint16_t PROGMEM combo_back_char[] = {HSCMD_R, HS_J, COMBO_END};
