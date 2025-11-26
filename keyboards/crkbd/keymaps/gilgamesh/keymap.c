@@ -1151,8 +1151,8 @@ const uint16_t PROGMEM combo_sorcery[] = {KC_C, QK_AREP, COMBO_END};
 const uint16_t PROGMEM combo_capsword[] = {SYM, QK_REP, COMBO_END};
 
 // numword
-const uint16_t PROGMEM combo_nwret[] = {JP_DOT, HSOPT_A, COMBO_END};
-const uint16_t PROGMEM combo_panic[] = {KC_X, HSSFT_S, COMBO_END};
+const uint16_t PROGMEM combo_nwret[] = {KC_6, KC_3, COMBO_END};
+const uint16_t PROGMEM combo_panic[] = {KC_AMP, KC_EXC, COMBO_END};
 
 // movement 
 const uint16_t PROGMEM combo_back_char[] = {HSCMD_R, HS_J, COMBO_END};
