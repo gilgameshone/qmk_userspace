@@ -1452,6 +1452,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
                                MEH(KC_Z),   WINMIN,  WINMAX,         XXXXXXX, XXXXXXX, _______
                               )
+  
 };
 
 
