@@ -1184,13 +1184,13 @@ const uint16_t PROGMEM combo_delw[] = {KC_Y, HSCTL_D, COMBO_END};
 const uint16_t PROGMEM combo_tab[] = {HSSFT_S, KC_V, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_X, HSSFT_S, COMBO_END};
 const uint16_t PROGMEM combo_bkspw[] = {KC_F, HSCTL_N, COMBO_END};
-const uint16_t PROGMEM combo_ret[] = {JP_DOT, HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_ret[] = {KC_O, HSOPT_A, COMBO_END};
 // j controls
 
 const uint16_t PROGMEM combo_jdel[] = {TJ_MO, TJ_TE, COMBO_END};
 const uint16_t PROGMEM combo_jtab[] = {TJ_MA, TJ_TA, COMBO_END};
 const uint16_t PROGMEM combo_jesc[] = {TJ_RA, TJ_TA, COMBO_END};
-const uint16_t PROGMEM combo_jret[] = {TJ_KUTEN, TJ_SHI, COMBO_END};
+const uint16_t PROGMEM combo_jret[] = {TJ_A, TJ_SHI, COMBO_END};
 const uint16_t PROGMEM combo_jbkspw[] = {TJ_WO, TJ_I, COMBO_END};
 
 
@@ -1208,12 +1208,12 @@ const uint16_t PROGMEM combo_jkana[] = {TJ_NO, TJ_I, COMBO_END};
 const uint16_t PROGMEM combo_undo[] = {KC_C, KC_P, COMBO_END};
 const uint16_t PROGMEM combo_copy[] = {KC_M, HSOPT_T, COMBO_END};
 const uint16_t PROGMEM combo_paste[] = {KC_L, HSCMD_R, COMBO_END};
-const uint16_t PROGMEM combo_save[] = {KC_O, HSOPT_A, COMBO_END};
+const uint16_t PROGMEM combo_save[] = {KC_DOT, HSOPT_A, COMBO_END};
 // j copy paste & shortcuts
 const uint16_t PROGMEM combo_jundo[] = {TJ_HA, TJ_XYO, COMBO_END};
 const uint16_t PROGMEM combo_jcopy[] = {TJ_RU, TJ_TO, COMBO_END};
 const uint16_t PROGMEM combo_jpaste[] = {TJ_KO, TJ_KA, COMBO_END};
-const uint16_t PROGMEM combo_jsave[] = {TJ_A, TJ_SHI, COMBO_END};
+const uint16_t PROGMEM combo_jsave[] = {TJ_KUTEN, TJ_SHI, COMBO_END};
 // misc
 const uint16_t PROGMEM combo_selword[] = {HSCTL_D, HSCTL_N, COMBO_END};
 const uint16_t PROGMEM combo_select_all[] = {HSSFT_I, JP_MINS, COMBO_END};
