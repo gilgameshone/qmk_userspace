@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 enum crkbd_layers {
     _MAGICSTURDY,
-    _QWERTY,
+    _QWERTYG,
     _TRON_BASE,
     _TRON_RED,
     _TRON_BLUE,
@@ -41,6 +41,7 @@ enum crkbd_layers {
     _NUM_W,
     _SORCERY,
     _WIN,
+    _NUMG,
 };
 
 #define NUM LT(_NUM,KC_BSPC)
@@ -1145,6 +1146,7 @@ const uint16_t PROGMEM combo_numword[] = {NUM, OSS, COMBO_END};
 const uint16_t PROGMEM combo_os_num[] = {HSCMD_R, NUM, COMBO_END};
 const uint16_t PROGMEM combo_os_nav[] = {HSOPT_T, NUM, COMBO_END};
 const uint16_t PROGMEM combo_os_sym[] = {HSCTL_D, NUM, COMBO_END};
+const uint16_t PROGMEM combo_fun_alt[] = {KC_O, HSOPT_A, KC_DOT COMBO_END};
 
 // English 
 const uint16_t PROGMEM combo_sorcery[] = {KC_C, QK_AREP, COMBO_END};
@@ -1236,6 +1238,7 @@ combo_t key_combos[] = {
   COMBO(combo_os_num, OSL(_NUM)),
   COMBO(combo_os_nav, OSL(_NAV)),
   COMBO(combo_os_sym, OSL(_SYM)),
+  COMBO(combo_fun_alt, MO(_FUN)),
   // English
   COMBO(combo_sorcery, OSL(_SORCERY)),
   COMBO(combo_capsword, CW_TOGG),
@@ -1368,11 +1371,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            KC_V,     KC_K,  HS_J,   HSHYP_G, KC_W,              KC_Z,  HSHYP_H, HS_COMM, JP_DOT,  JP_MINS,
            _______,     NUM,  SYM,                              QK_REP,  OSS, _______
   ),
-  [_QWERTY] = LAYOUT_split_3x5_3(
-           KC_Q,     KC_W,    KC_E,    KC_R,  KC_T,            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-           KC_A,     KC_S,    KC_D,    KC_F,  KC_G,            KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,
-           KC_Z,     KC_X,    KC_C,    KC_V,  KC_B,            KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
-                           _______,    NUM,    SYM,            QK_REP,  OSS, _______
+  [_QWERTYG] = LAYOUT_split_3x5_3(
+           KC_T,     KC_Q,     KC_W,    KC_E,    KC_R,         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+           KC_LSFT,  KC_A,     KC_S,    KC_D,    KC_F,         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,
+           KC_LCTL,  KC_Z,     KC_X,    KC_C,    KC_V,         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
+                        KC_G,    MO(_NUMG), KC_SPC,            XXXXXXX, XXXXXXX, XXXXXXX
   ),
   [_TRON_BASE] = LAYOUT_split_3x5_3(
         TJ_RA,   TJ_RU,   TJ_KO,   TJ_HA,  TJ_XYO,            TJ_KI,   TJ_NO,   TJ_KU,    TJ_A,   TJ_RE,
@@ -1417,20 +1420,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         _______,     NUM,  _______,           _______,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,    PRINTSEL, OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, XXXXXXX,      XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
-      KC_HOME, KC_PGUP, KC_PGDN, KC_END,   XXXXXXX,   HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    PRINTSEL, OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, XXXXXXX,     XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
+      KC_HOME, KC_PGUP, KC_PGDN, KC_END,  XXXXXXX,  HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
       _______, KC_ESC,    KC_TAB,      _______, _______, _______
                               ),
   [_SYM] = LAYOUT_split_3x5_3(
-       XXXXXXX,  XXXXXXX, XXXXXXX,    XXXXXXX,        KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
-       _______, A(KC_DEL), KC_PENT,   KC_DEL,    HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
-       JP_CAPS,     DFINE,   GTRNS,    GOOGL,       KC_LPAD,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
+       XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,      KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
+       _______, A(KC_DEL), KC_PENT,   KC_DEL,  HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
+       JP_CAPS,     DFINE,   GTRNS,    GOOGL,     KC_LPAD,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
                                 XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  _______, _______
                               ),
   [_FUN] = LAYOUT_split_3x5_3(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           KC_NUM,      KC_PSCR,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           KC_INS,      KC_SCRL,   KC_F5,   KC_F6,   KC_F7,   KC_F8,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          KC_NUM,      KC_PSCR,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
+      XXXXXXX, XXXXXXX, XXXXXXX, DF(_QWERTYG),      KC_INS,      KC_SCRL,   KC_F5,   KC_F6,   KC_F7,   KC_F8,
       XXXXXXX, XXXXXXX, XXXXXXX, DF(_MAGICSTURDY), KC_APP,      KC_PAUS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,
                                  _______, XXXXXXX, XXXXXXX,       KC_NUM,  KC_INS,  _______
                               ),
@@ -1451,8 +1454,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       WINLEFT, MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  C(KC_F2),           KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
       MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
                                MEH(KC_Z),   WINMIN,  WINMAX,         XXXXXXX, XXXXXXX, _______
+                              ),
+    [_NUMG] = LAYOUT_split_3x5_3(
+      KC_ESC,  KC_7, KC_8, KC_9, KC_T,      JP_PLUS,   KC_F9,  KC_F10,  KC_F11,  KC_F12,        
+      KC_TAB,  KC_4, KC_5, KC_6, KC_G,      KC_MINS,   KC_F5,   KC_F6,   KC_F7,   KC_F8,         
+        KC_0,  KC_1, KC_2, KC_3, KC_B,       JP_EQL,   KC_F1,   KC_F2,   KC_F3,   KC_F4,         
+                        XXXXXXX, _______,  XXXXXXX,           XXXXXXX,  XXXXXXX, XXXXXXX
                               )
-  
 };
 
 
