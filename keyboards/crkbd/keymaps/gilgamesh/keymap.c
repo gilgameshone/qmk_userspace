@@ -1146,7 +1146,7 @@ const uint16_t PROGMEM combo_numword[] = {NUM, OSS, COMBO_END};
 const uint16_t PROGMEM combo_os_num[] = {HSCMD_R, NUM, COMBO_END};
 const uint16_t PROGMEM combo_os_nav[] = {HSOPT_T, NUM, COMBO_END};
 const uint16_t PROGMEM combo_os_sym[] = {HSCTL_D, NUM, COMBO_END};
-const uint16_t PROGMEM combo_fun_alt[] = {KC_O, HSOPT_A, KC_DOT COMBO_END};
+const uint16_t PROGMEM combo_fun_alt[] = {KC_O, HSOPT_A, KC_DOT, COMBO_END};
 
 // English 
 const uint16_t PROGMEM combo_sorcery[] = {KC_C, QK_AREP, COMBO_END};
@@ -1420,9 +1420,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         _______,     NUM,  _______,           _______,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    PRINTSEL, OSM(MOD_RCTL), OSM(MOD_RGUI), OSM(MOD_RALT), OSM(MOD_RSFT),
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, XXXXXXX,     XXXXXXX,       KC_RCTL,       KC_RGUI,       KC_RALT,       KC_RSFT,
-      KC_HOME, KC_PGUP, KC_PGDN, KC_END,  XXXXXXX,  HYPR(KC_B),       KC_MPLY,       KC_VOLD,       KC_VOLU,       KC_MUTE,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     PRINTSEL,   PRINTSCR, PRINTALT,  _______,  _______,
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, XXXXXXX,      XXXXXXX,    KC_RCTL,  KC_RGUI,  KC_RALT,  KC_RSFT,
+      KC_HOME, KC_PGUP, KC_PGDN, KC_END,  XXXXXXX,   HYPR(KC_B),    KC_MPLY,  KC_VOLD,  KC_VOLU,  KC_MUTE,
       _______, KC_ESC,    KC_TAB,      _______, _______, _______
                               ),
   [_SYM] = LAYOUT_split_3x5_3(
@@ -1450,8 +1450,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______,     _______, _______, _______
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
-      MEH(KC_X), MEH(KC_M), KC_MCTL,  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
-      WINLEFT, MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  C(KC_F2),           KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
+      MEH(KC_X), MEH(KC_M), MEH(KC_L),  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
+      WINLEFT,   MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  C(KC_F2),            KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
       MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
                                MEH(KC_Z),   WINMIN,  WINMAX,         XXXXXXX, XXXXXXX, _______
                               ),
