@@ -1420,8 +1420,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         _______,     NUM,  _______,           _______,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     PRINTSEL,   PRINTSCR, PRINTALT,  _______,  _______,
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, XXXXXXX,      XXXXXXX,    KC_RCTL,  KC_RGUI,  KC_RALT,  KC_RSFT,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(KC_F8),     PRINTSEL,   PRINTSCR, PRINTALT,  _______,  _______,
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, C(KC_F2),      XXXXXXX,    KC_RCTL,  KC_RGUI,  KC_RALT,  KC_RSFT,
       KC_HOME, KC_PGUP, KC_PGDN, KC_END,  XXXXXXX,   HYPR(KC_B),    KC_MPLY,  KC_VOLD,  KC_VOLU,  KC_MUTE,
       _______, KC_ESC,    KC_TAB,      _______, _______, _______
                               ),
@@ -1450,10 +1450,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______,     _______, _______, _______
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
-      MEH(KC_X), MEH(KC_M), MEH(KC_L),  MEH(KC_C),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
-      WINLEFT,   MEH(KC_Z), MEH(KC_B),  MEH(KC_D),  C(KC_F2),            KC_CPNL, KC_F17, KC_F18, KC_F19, KC_F20,
+      MEH(KC_X), MEH(KC_1), MEH(KC_2),  MEH(KC_3),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
+      MEH(KC_S), MEH(KC_8), MEH(KC_9),  MEH(KC_E),  MEH(KC_Y),           KC_MCTL, KC_F17, KC_F18, KC_F19, KC_F20,
       MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
-                               MEH(KC_Z),   WINMIN,  WINMAX,         XXXXXXX, XXXXXXX, _______
+                               MEH(KC_Z),  MEH(KC_4), MEH(KC_N),         KC_CPNL, XXXXXXX, _______
                               ),
     [_NUMG] = LAYOUT_split_3x5_3(
       KC_ESC,  KC_7, KC_8, KC_9, KC_T,      JP_PLUS,   KC_F9,  KC_F10,  KC_F11,  KC_F12,        
