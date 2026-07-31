@@ -1414,52 +1414,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         _______, _______, _______,            _______, _______, _______
                                     ),
   [_NUM] = LAYOUT_split_3x5_3(
-      JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, KC_INT1,           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
-      JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, JP_HASH,            JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
-      TJS_QMARK, JP_UNDS, JP_PERC, JP_AT, JP_PIPE,            JP_EQL,   KC_1, KC_2, KC_3,  KC_DOT,
-                        _______,     NUM,  _______,           _______,  KC_0, _______
+        JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, KC_INT1,      JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
+        JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, JP_HASH,      JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
+      TJS_QMARK, JP_UNDS, JP_PERC, JP_AT, JP_PIPE,         JP_EQL,  KC_1, KC_2, KC_3,  KC_DOT,
+        _______,     NUM,  _______,                       _______,  KC_0, _______
                               ),
   [_NAV] = LAYOUT_split_3x5_3(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(KC_F8),     PRINTSEL,   PRINTSCR, PRINTALT,  _______,  _______,
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, C(KC_F2),      XXXXXXX,    KC_RCTL,  KC_RGUI,  KC_RALT,  KC_RSFT,
-      KC_HOME, KC_PGUP, KC_PGDN, KC_END,  XXXXXXX,   HYPR(KC_B),    KC_MPLY,  KC_VOLD,  KC_VOLU,  KC_MUTE,
-      _______, KC_ESC,    KC_TAB,      _______, _______, _______
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(KC_F8),     PRINTSEL,  PRINTSCR, PRINTALT,  _______,  _______,
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, C(KC_F2),      XXXXXXX,   KC_RCTL,  KC_RGUI,  KC_RALT,  KC_RSFT,
+      KC_HOME, KC_PGUP, KC_PGDN, KC_END,  XXXXXXX,    HYPR(KC_B),   KC_MPLY,  KC_VOLD,  KC_VOLU,  KC_MUTE,
+      _______, KC_ESC,    KC_TAB,                        _______,   _______,  _______
                               ),
   [_SYM] = LAYOUT_split_3x5_3(
-       XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,      KC_APP,         LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
-       _______, A(KC_DEL), KC_PENT,   KC_DEL,  HYPR(KC_Y),           JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
-       JP_CAPS,     DFINE,   GTRNS,    GOOGL,     KC_LPAD,           KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
-                                XXXXXXX, XXXXXXX,    XXXXXXX,           _______,  _______, _______
+       XXXXXXX, S(G(KC_G)), G(KC_F), G(KC_G),     KC_APP,    LSA(JP_8),  JP_HASH, JP_LABK, JP_RABK,   JP_CIRC,
+       _______,  A(KC_DEL), KC_PENT,  KC_DEL, HYPR(KC_Y),      JP_TILD,  JP_PERC, JP_LCBR, JP_RCBR,    JP_GRV,
+       JP_CAPS,      DFINE,   GTRNS,   GOOGL,    KC_LPAD,      KC_NUBS,   JP_YEN,  JP_DLR, A(JP_3), LSA(JP_2),
+       XXXXXXX, XXXXXXX,   XXXXXXX,                            _______,  _______, _______
                               ),
   [_FUN] = LAYOUT_split_3x5_3(
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          KC_NUM,      KC_PSCR,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
-      XXXXXXX, XXXXXXX, XXXXXXX, DF(_QWERTYG),      KC_INS,      KC_SCRL,   KC_F5,   KC_F6,   KC_F7,   KC_F8,
+      XXXXXXX, XXXXXXX, XXXXXXX, DF(_QWERTYG),     KC_INS,      KC_SCRL,   KC_F5,   KC_F6,   KC_F7,   KC_F8,
       XXXXXXX, XXXXXXX, XXXXXXX, DF(_MAGICSTURDY), KC_APP,      KC_PAUS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,
-                                 _______, XXXXXXX, XXXXXXX,       KC_NUM,  KC_INS,  _______
+      _______, XXXXXXX, XXXXXXX,                                KC_NUM,  KC_INS,  _______
                               ),
   [_NUM_W] = LAYOUT_split_3x5_3(
-      JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN, KC_INT1,           JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
-      JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, TJS_HASH,           JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
-      JP_QUES, JP_UNDS, JP_PERC, JP_AT,    JP_PIPE,            JP_EQL,  KC_1, KC_2, KC_3,  KC_DOT,
-                        _______, _______,  _NW_SPC,           _______,  KC_0, _______
+      JP_EXLM, JP_LBRC, JP_RBRC, JP_COLN,  KC_INT1,       JP_PLUS,  KC_7, KC_8, KC_9, JP_ASTR,
+      JP_AMPR, JP_LPRN, JP_RPRN, JP_SCLN, TJS_HASH,       JP_MINS,  KC_4, KC_5, KC_6, JP_SLSH,
+      JP_QUES, JP_UNDS, JP_PERC, JP_AT,    JP_PIPE,       JP_EQL,  KC_1, KC_2, KC_3,  KC_DOT,
+      _______, _______,  _NW_SPC,                        _______,  KC_0, _______
                               ),
     [_SORCERY] = LAYOUT_split_3x5_3(
       _______, _______, _______, _______, _______,     _______, _______,  _UNISP, _______, _______,
       _______, _______, _______, _______, _______,     _______, _______, _______, _______,  _INAUD,
       _______, _______, _JPAUD,  _______, _______,     _______, _______, _______, _______, _______,
-      _______, _______, _______,     _______, _______, _______
+      _______, _______, _______,                       _______, _______, _______
                               ),
   [_WIN] = LAYOUT_split_3x5_3(
-      MEH(KC_X), MEH(KC_1), MEH(KC_2),  MEH(KC_3),  MEH(KC_P),           KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
-      MEH(KC_S), MEH(KC_8), MEH(KC_9),  MEH(KC_E),  MEH(KC_Y),           KC_MCTL, KC_F17, KC_F18, KC_F19, KC_F20,
-      MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),           KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
-                               MEH(KC_Z),  MEH(KC_4), MEH(KC_N),         KC_CPNL, XXXXXXX, _______
+      MEH(KC_X), MEH(KC_1), MEH(KC_2),  MEH(KC_3),  MEH(KC_P),      KC_EJCT, KC_F21, KC_F22, KC_F23, KC_F24,
+      MEH(KC_S), MEH(KC_8), MEH(KC_9),  MEH(KC_E),  MEH(KC_Y),      KC_MCTL, KC_F17, KC_F18, KC_F19, KC_F20,
+      MEH(KC_V), MEH(KC_K), MEH(KC_J),  MEH(KC_G),  MEH(KC_W),      KC_LPAD, KC_F13, KC_F14, KC_F15, KC_F16, 
+      MEH(KC_Z),  MEH(KC_4), MEH(KC_N),                             KC_CPNL, XXXXXXX, _______
                               ),
     [_NUMG] = LAYOUT_split_3x5_3(
       KC_ESC,  KC_7, KC_8, KC_9, KC_T,      JP_PLUS,   KC_F9,  KC_F10,  KC_F11,  KC_F12,        
       KC_TAB,  KC_4, KC_5, KC_6, KC_G,      KC_MINS,   KC_F5,   KC_F6,   KC_F7,   KC_F8,         
         KC_0,  KC_1, KC_2, KC_3, KC_B,       JP_EQL,   KC_F1,   KC_F2,   KC_F3,   KC_F4,         
-                        XXXXXXX, _______,  XXXXXXX,           XXXXXXX,  XXXXXXX, XXXXXXX
+     XXXXXXX, _______,  XXXXXXX,            XXXXXXX,  XXXXXXX, XXXXXXX
                               )
 };
 

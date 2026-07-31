@@ -44,7 +44,7 @@ The second magic key `☆` (Sorcery) can be accessed by pressing `★` and `C` a
 ### Num (hold BKSP)
 ```
  ╭─────────────────────╮ ╭─────────────────────╮
- │  !   [   ]   : C-F2 │ │  +   7   8   9   *  │ 
+ │  !   [   ]   : INT1 │ │  +   7   8   9   *  │ 
  │  &   (   )   ;   #  | |  -   4   5   6   /  │ 
  │  ?   _   %   @   |  │ │  =   1   2   3   .  │ 
  ╰─────────╮           │ │ RET  0  ╭───────────╯
@@ -57,8 +57,8 @@ This layer has some realestate available. `aPst` here pastes without formatting.
 
 ```
  ╭─────────────────────────────╮ ╭─────────────────────╮
- │ lock fndPr find fndNx       │ │  °   #   <   >   ^  │ 
- │ rstZ ZoomI ZoomO DEL  ynk   | |  ~   %   {   }   `  │ 
+ │      fndPr find  fndNx      │ │  °   #   <   >   ^  │ 
+ │      DelA  KpEnt DEL   ynk  | |  ~   %   {   }   `  │ 
  │ Caps def   gTr   Ggl        │ │  §   ¥   $   £   €  │ 
  ╰───────────────╮             │ │         ╭───────────╯
                  ╰─────────────╯ ╰─────────╯
@@ -68,11 +68,11 @@ This layer has some realestate available. `aPst` here pastes without formatting.
 
 Nav has some available realestate, but the hold key to access it gets used heavily. `Rwd` uses Alfred to rewind the media player slightly. 
 ```
- ╭────────────────────────────────╮ ╭─────────────────────────╮
- │ undo copy  pste  save          │ │ srcnSel Ctl Cmd Opt Sft │ 
- │ ←    ↑     ↓     →    files    | | closWin Ctl Cmd Opt Sft │ 
- │ Hme  PgD   PgU   End  swtchapp │ │ Rwd     Pse vDn vUp Mut │ 
- ╰───────────────────╮  ESC  TAB  │ │         ╭───────────────╯
+ ╭────────────────────────────────╮ ╭─────────────────────────────────╮
+ │                                │ │ srcnSel srcnSht srcnAlt         │ 
+ │ ←    ↑     ↓     →    files    | | closWin Ctl     Cmd     Opt Sft │ 
+ │ Hme  PgD   PgU   End  swtchapp │ │ Rwd     Pse     vDn     vUp Mut │ 
+ ╰───────────────────╮  ESC  TAB  │ │         ╭───────────────────────╯
                      ╰────────────╯ ╰─────────╯
 ```
 ### Combos
@@ -173,16 +173,16 @@ qi- = ble layer
 ```
 
 
-### Meh (hold j)
+### Meh (hold j or ,)
 
 
 ```
- ╭───────────────╮ ╭──────────────────────╮
- │ X M MCTL C P  │ │ EJCT F21 F22 F23 F24 │ 
- │ S Z B    D F  | | CPNL F17 F18 F19 F20 │ 
- │ V K J    G W  │ │ LPAD F13 F14 F15 F16 │ 
- ╰────╮  L  SPC  │ │         ╭────────────╯
-      ╰──────────╯ ╰─────────╯
+ ╭────────────╮ ╭──────────────────────╮
+ │ X 1 2 3 P  │ │ EJCT F21 F22 F23 F24 │ 
+ │ S 8 9 D F  | | CPNL F17 F18 F19 F20 │ 
+ │ V K J G W  │ │ LPAD F13 F14 F15 F16 │ 
+ ╰────╮  4 N  │ │ CPnL Globe  ╭────────╯
+      ╰───────╯ ╰─────────────╯
 ```
 
 
