@@ -1331,7 +1331,7 @@ bool caps_word_press_user(uint16_t keycode) {
     }
 }
 
-// key overides
+// key overrides
 // SHIFT + ' = "
 const key_override_t comm_quo_override = ko_make_basic(MOD_MASK_SHIFT, HS_COMM, JP_QUOT);
 const key_override_t dot_dquo_override = ko_make_basic(MOD_MASK_SHIFT, JP_DOT, JP_DQUO);
@@ -1378,27 +1378,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         KC_G,    MO(_NUMG), KC_SPC,            XXXXXXX, XXXXXXX, XXXXXXX
   ),
   [_TRON_BASE] = LAYOUT_split_3x5_3(
-        TJ_RA,   TJ_RU,   TJ_KO,   TJ_HA,  TJ_XYO,            TJ_KI,   TJ_NO,   TJ_KU,    TJ_A,   TJ_RE,
+        TJ_RA,   TJ_RU,   TJ_KO,   TJ_HA,  TJ_XYO,            TJ_KI,   TJ_RI,   TJ_KU,    TJ_A,   TJ_RE,
         TJ_TA,   TJ_TO,   TJ_KA,   TJ_TE,   TJ_MO,            TJ_WO,    TJ_I,    TJ_U,  TJ_SHI,   TJ_NN,
-        TJ_MA,   TJ_RI,   TJ_NI,   TJ_SA,   TJ_NA,            TJ_SU,  TJ_TSU,TJ_DOUTEN,TJ_KUTEN,TJ_XTSU,
+        TJ_MA,   TJ_NI,   TJ_SA ,  TJ_NO ,  TJ_NA,            TJ_SU,  TJ_TSU,TJ_DOUTEN,TJ_KUTEN,TJ_XTSU,
         _______,   TRON_NUM,  OSL(_TRON_RED),                 OSL(_TRON_BLUE), TRON_NAV,  _______
                          ),
   [_TRON_BLUE] = LAYOUT_split_3x5_3(
-        TJ_BI,   TJ_ZO,   TJ_GO,  TJ_BA,    TJ_BO,            TJ_E,   TJ_KE,   TJ_ME,   TJ_MU,  TJ_RO,
+        TJ_BI,   TJ_ZO,   TJ_GO,  TJ_BA,    TJ_BO,            TJ_E,  _______,   TJ_ME,   TJ_MU,  TJ_RO,
         TJ_DA,   TJ_DO,   TJ_GA,  TJ_DE,    TJ_BU,            TJ_O,  TJ_CHI,TJ_CHOUONNPU,TJ_MI,  TJ_YA,
-        TJ_XE,   TJ_XO,    TJ_ZE,  TJ_ZA,   TJ_BE,            TJ_WA,   TJ_XI,   TJ_XA, _______,   TJ_XU,
+      _______,   TJ_GE,   TJ_ZA,  TJ_ZE,    TJ_BE,            TJ_WA, _______,  _______, _______, _______,
               _______,  OSL(_TRON_NUM), OSL(_TRON_PURPLE),             _______, _______, _______
                                     ),
   [_TRON_RED] = LAYOUT_split_3x5_3(
-        TJ_HI,   TJ_SO,TJ_NAKAGURO,TJ_XYA,  TJ_HO,             TJ_GI,   TJ_GE,  TJ_GU,  _______, _______,
-        TJ_NU,   TJ_NE,  TJ_XYU,   TJ_YO,   TJ_FU,             TJ_O,  TJ_DZI,  TJ_VU,    TJ_JI, _______,
-        TJ_XE,   TJ_XO,   TJ_SE,   TJ_YU,   TJ_HE,             TJ_ZU,  TJ_DZU,TJ_LKAGIKAKO,TJ_RKAGIKAKO, TJ_XU,
+        TJ_HI,   TJ_SO,TJ_NAKAGURO,TJ_XYA,  TJ_HO,             TJ_GI,  _______,  TJ_GU,  _______, _______,
+        TJ_NU,   TJ_NE,  TJ_XYU,   TJ_YO,   TJ_FU,             TJ_O,   TJ_DZI,  TJ_VU,    TJ_JI, _______,
+       _______,   TJ_KE,   TJ_YU,  TJ_SE,   TJ_HE,             TJ_ZU,  TJ_DZU,TJ_LKAGIKAKO,TJ_RKAGIKAKO, _______,
                        _______,  _______, OSL(_TRON_SYM),             OSL(_TRON_PURPLE), _______, _______
                                     ),
   [_TRON_PURPLE] = LAYOUT_split_3x5_3(
-        TJ_PI, _______, _______,   TJ_PA,   TJ_PO,            _______, _______, _______, _______, _______,
+        TJ_PI, _______, _______,   TJ_PA,   TJ_PO,            _______, _______,   _______, _______, _______,
       KC_LNG5, _______, _______, _______,   TJ_PU,            _______, HIRAGANA, KATAKANA, _______, _______,
-      _______, _______, _______, _______,   TJ_PE,            _______, _______, _______, _______, _______,
+        TJ_XE,   TJ_XO, _______, _______,   TJ_PE,            _______, TJ_XI,       TJ_XA, _______,   TJ_XU,
                         _______, KC_INT5, _______,            _______, KC_INT4, _______
                                     ),
   [_TRON_NUM] = LAYOUT_split_3x5_3(
